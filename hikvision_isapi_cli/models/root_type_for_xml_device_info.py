@@ -16,14 +16,14 @@ class RootTypeForXMLDeviceInfo:
     """XML message about device information
 
     Example:
-        {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': {}, 'deviceLocation': '', 'deviceStatus':
+        {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': '', 'deviceLocation': '', 'deviceStatus':
             '', 'DetailAbnormalStatus': {'hardDiskFull': {}, 'hardDiskError': {}, 'ethernetBroken': {}, 'ipaddrConflict':
             {}, 'illegalAccess': {}, 'recordError': {}, 'raidLogicDiskError': {}, 'spareWorkDeviceError': {}},
             'systemContact': '', 'model': '', 'serialNumber': '', 'macAddress': '', 'firmwareVersion': '',
             'firmwareReleasedDate': '', 'bootVersion': '', 'bootReleasedDate': '', 'hardwareVersion': '', 'encoderVersion':
             '', 'encoderReleasedDate': '', 'decoderVersion': '', 'decoderReleasedDate': '', 'softwareVersion': '',
-            'capacity': '', 'usedCapacity': '', 'deviceType': {}, 'telecontrolID': '', 'supportBeep': '',
-            'supportVideoLoss': '', 'firmwareVersionInfo': '', 'actualFloorNum': {}, 'subChannelEnabled': '',
+            'capacity': '', 'usedCapacity': '', 'deviceType': '', 'telecontrolID': '', 'supportBeep': '',
+            'supportVideoLoss': '', 'firmwareVersionInfo': '', 'actualFloorNum': '', 'subChannelEnabled': '',
             'thrChannelEnabled': '', 'radarVersion': '', 'cameraModuleVersion': '', 'mainversion': '', 'subversion': '',
             'upgradeversion': '', 'customizeversion': '', 'companyName': '', 'copyright': '', 'systemName': '',
             'systemStatus': '', 'isLeaderDevice': '', 'clusterVersion': '', 'customizedInfo': '', 'localZoneNum': '',

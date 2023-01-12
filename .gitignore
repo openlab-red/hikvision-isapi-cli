@@ -221,3 +221,7 @@ poetry.toml
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,macos
+
+test_client.py
+.secrets
+snapshot.jpg

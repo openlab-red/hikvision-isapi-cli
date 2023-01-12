@@ -1,10 +1,14 @@
+[![PyPI current version](https://img.shields.io/pypi/v/hikvision-isapi-cli.svg)](https://pypi.python.org/pypi/hikvision-isapi-cli)
+[![Python Support](https://img.shields.io/pypi/pyversions/hikvision-isapi-cli.svg)](https://pypi.python.org/pypi/hikvision-isapi-cli)
+
+
 # hikvision-isapi-cli
 A client library for accessing Hikvision ISAPI
 
 ### OpenAPI Generator
 
 ```bash
-openapi-python-client update --path hikvision-isapi-cli/openapi.json --custom-template-path=hikvision-isapi-cli/templates/
+rm -fr .history/;cd ..;openapi-python-client update --path hikvision-isapi-cli/openapi.json --custom-template-path=hikvision-isapi-cli/templates/ --config=hikvision-isapi-cli/.config.yaml;cd hikvision-isapi-cli
 ```
 
 ## Usage
@@ -13,23 +17,7 @@ First, create a client:
 ```python
 from hikvision_isapi_cli import Client
 
-client = Client(base_url="https://api.example.com")
-```
-
-If the endpoints you're going to hit require authentication, use `AuthenticatedClient` instead:
-
-```python
-from hikvision_isapi_cli import AuthenticatedClient
-
-client = AuthenticatedClient(base_url="https://api.example.com", token="SuperSecretToken")
-```
-
-Or digest authentication:
-
-```python
-from hikvision_isapi_cli import DigestAuthClient
-
-client = DigestAuthClient(base_url="https://api.example.com", username="username", password="SuperSecretPassword")
+client = Client(base_url="https://api.example.com", username="username", password="SuperSecretPassword")
 ```
 
 Now call your endpoint and use your models:
@@ -58,9 +46,8 @@ response: Response[MyDataModel] = await get_my_data_model.asyncio_detailed(clien
 By default, when you're calling an HTTPS API it will attempt to verify that SSL is working correctly. Using certificate verification is highly recommended most of the time, but sometimes you may need to authenticate to a server (especially an internal server) using a custom certificate bundle.
 
 ```python
-client = AuthenticatedClient(
+client = Client(
     base_url="https://internal_api.example.com", 
-    token="SuperSecretToken",
     verify_ssl="/path/to/certificate_bundle.pem",
 )
 ```
@@ -68,9 +55,8 @@ client = AuthenticatedClient(
 You can also disable certificate validation altogether, but beware that **this is a security risk**.
 
 ```python
-client = AuthenticatedClient(
-    base_url="https://internal_api.example.com", 
-    token="SuperSecretToken", 
+client = Client(
+    base_url="https://internal_api.example.com",  
     verify_ssl=False
 )
 ```

@@ -1,22 +1,28 @@
 [tool.poetry]
 name = "hikvision-isapi-cli"
-version = "1.0.0"
-description = "A client library for accessing Hikvision ISAPI"
+version = "1.0.20"
+description = "A client library for accessing Hikvision ISAPI and more"
 
 authors = ["mmascia"]
 
 readme = "README.md"
 packages = [
     {include = "hikvision_isapi_cli"},
+    {include = "hikvision_isapi_sk"},
 ]
-include = ["CHANGELOG.md", "hikvision_isapi_cli/py.typed"]
+include = ["CHANGELOG.md", "hikvision_isapi_cli/py.typed", "docs"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.10"
 httpx = ">=0.15.4,<0.24.0"
-attrs = ">=21.3.0"
 python-dateutil = "^2.8.0"
 xmltodict = ">=0.13.0"
+pytest = ">=7.2.0"
+pytest-asyncio = ">=0.20.3"
+pytest-socket = ">=0.5.1"
+#opencv-python = "==4.6.0.66"
+#opencv-python-headless = "==4.6.0.66"
+#numpy = ">=1.24.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -24,13 +30,14 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 120
-target_version = ['py37', 'py38', 'py39']
+target_version = ['py310', 'py311']
 exclude = '''
 (
   /(
     | \.git
     | \.venv
     | \.mypy_cache
+    | \.history
   )/
 )
 '''
@@ -38,3 +45,8 @@ exclude = '''
 [tool.isort]
 line_length = 120
 profile = "black"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]

@@ -263,6 +263,115 @@
                 "description": "callStatus/capabilities?format=json"
             }
         },
+        "/ISAPI/Security/sessionLogin": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/XML_SessionLogin"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_SessionLogin_Response"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus_AuthenticationFailed"
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "sessionLogin",
+                "summary": "sessionLogin",
+                "description": "sessionLogin"
+            },
+            "parameters": [
+                {
+                    "name": "timeStamp",
+                    "description": "",
+                    "schema": {
+                        "format": "double",
+                        "type": "number"
+                    },
+                    "in": "query",
+                    "required": true
+                }
+            ]
+        },
+        "/ISAPI/Security/sessionHeartbeat": {
+            "put": {
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "sessionHeartbeat",
+                "summary": "sessionHeartbeat",
+                "description": "sessionHeartbeat"
+            }
+        },
+        "/ISAPI/Security/sessionLogin/capabilities": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_SessionLoginCap"
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "sessionLogin_capabilities",
+                "summary": "sessionLogin/capabilities",
+                "description": "sessionLogin/capabilities"
+            },
+            "parameters": [
+                {
+                    "name": "username",
+                    "description": "Username",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "in": "query",
+                    "required": true
+                },
+                {
+                    "name": "random",
+                    "description": "",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "query",
+                    "required": true
+                }
+            ]
+        },
         "/ISAPI/Security/users": {
             "get": {
                 "tags": [
@@ -947,6 +1056,198 @@
     },
     "components": {
         "schemas": {
+            "XML_ResponseStatus_AuthenticationFailed": {
+                "title": "Root Type for XML_ResponseStatus_AuthenticationFailed",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "ResponseStatus": {
+                        "type": "object",
+                        "properties": {
+                            "requestURL": {
+                                "type": "string"
+                            },
+                            "statusCode": {
+                                "type": "string"
+                            },
+                            "statusString": {
+                                "type": "string"
+                            },
+                            "subStatusCode": {
+                                "type": "string"
+                            },
+                            "lockStatus": {
+                                "type": "string"
+                            },
+                            "retryTimes": {
+                                "type": "string"
+                            },
+                            "resLockTime": {
+                                "type": "string"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "ResponseStatus": {
+                        "requestURL": "",
+                        "statusCode": "",
+                        "statusString": "",
+                        "subStatusCode": "",
+                        "lockStatus": "",
+                        "retryTimes": "",
+                        "resLockTime": "",
+                        "@version": "1.0",
+                        "@xmlns": "http://www.std-cgi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_SessionLoginCap": {
+                "title": "Root Type for XML_SessionLoginCap",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "SessionLoginCap": {
+                        "type": "object",
+                        "properties": {
+                            "sessionID": {
+                                "type": "string"
+                            },
+                            "challenge": {
+                                "type": "string"
+                            },
+                            "iterations": {
+                                "type": "string"
+                            },
+                            "isIrreversible": {
+                                "type": "string"
+                            },
+                            "salt": {
+                                "type": "string"
+                            },
+                            "sessionIDVersion": {
+                                "type": "string"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "SessionLoginCap": {
+                        "sessionID": "5ab522a707187090e375dc9e07f80f48f6a2a1c4a171b501b47ea9607db57f7f",
+                        "challenge": "3f559d75aa0c053e631092d75aa59355",
+                        "iterations": "100",
+                        "isIrreversible": "true",
+                        "salt": "ADX8O3PD524FJ1BGFXK7X94SXKU1G3VQGSYKBOXW61S5IJLYWM59B9289WPPFKFV",
+                        "sessionIDVersion": "2",
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_SessionLogin": {
+                "title": "Root Type for XML_SessionLogin",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "SessionLogin": {
+                        "type": "object",
+                        "properties": {
+                            "userName": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            },
+                            "sessionID": {
+                                "type": "string"
+                            },
+                            "isSupportSessionTag": {
+                                "type": "string"
+                            },
+                            "isSessionIDValidLongTerm": {
+                                "type": "string"
+                            },
+                            "sessionIDVersion": {
+                                "type": "string"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "SessionLogin": {
+                        "userName": "admin",
+                        "password": "xxxxxxxxxxxx",
+                        "sessionID": "5ab522a707187090e375dc9e07f80f48f6a2a1c4a171b501b47ea9607db57f7f",
+                        "isSupportSessionTag": "false",
+                        "isSessionIDValidLongTerm": "false",
+                        "sessionIDVersion": "2",
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_SessionLogin_Response": {
+                "title": "Root Type for XML_SessionLogin_Response",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "SessionLogin": {
+                        "type": "object",
+                        "properties": {
+                            "statusValue": {
+                                "type": "string"
+                            },
+                            "statusString": {
+                                "type": "string"
+                            },
+                            "isDefaultPassword": {
+                                "type": "string"
+                            },
+                            "isRiskPassword": {
+                                "type": "string"
+                            },
+                            "isActivated": {
+                                "type": "string"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "SessionLogin": {
+                        "statusValue": "200",
+                        "statusString": "OK",
+                        "isDefaultPassword": "false",
+                        "isRiskPassword": "false",
+                        "isActivated": "true",
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
             "JSON_CallStatus": {
                 "title": "Root Type for CallStatus",
                 "description": "JSON message about the call status",
@@ -1486,550 +1787,164 @@
                 "description": "StreamingChannel message in XML format",
                 "type": "object",
                 "properties": {
-                    "StreamingChannel": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "channelName": {
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "type": "string"
+                    },
+                    "Transport": {
                         "type": "object",
                         "properties": {
-                            "id": {
-                                "type": "string"
+                            "ControlProtocolList": {
+                                "type": "object",
+                                "properties": {
+                                    "ControlProtocol": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "streamingTransport": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             },
-                            "channelName": {
-                                "type": "string"
-                            },
+                            "Security": {
+                                "type": "object",
+                                "properties": {
+                                    "enabled": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "Video": {
+                        "type": "object",
+                        "properties": {
                             "enabled": {
                                 "type": "string"
                             },
-                            "Transport": {
-                                "type": "object",
-                                "properties": {
-                                    "maxPacketSize": {
-                                        "type": "string"
-                                    },
-                                    "audioPacketLength": {
-                                        "type": "string"
-                                    },
-                                    "audioInboundPacketLength": {
-                                        "type": "string"
-                                    },
-                                    "audioInboundPortNo": {
-                                        "type": "string"
-                                    },
-                                    "videoSourcePortNo": {
-                                        "type": "string"
-                                    },
-                                    "audioSourcePortNo": {
-                                        "type": "string"
-                                    },
-                                    "ControlProtocolList": {
-                                        "type": "object",
-                                        "properties": {
-                                            "ControlProtocol": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "streamingTransport": {
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "Unicast": {
-                                        "type": "object",
-                                        "properties": {
-                                            "enabled": {
-                                                "type": "string"
-                                            },
-                                            "interfaceID": {
-                                                "type": "string"
-                                            },
-                                            "rtpTransportType": {
-                                                "type": "object"
-                                            }
-                                        }
-                                    },
-                                    "Multicast": {
-                                        "type": "object",
-                                        "properties": {
-                                            "enabled": {
-                                                "type": "string"
-                                            },
-                                            "userTriggerThreshold": {
-                                                "type": "string"
-                                            },
-                                            "destIPAddress": {
-                                                "type": "string"
-                                            },
-                                            "videoDestPortNo": {
-                                                "type": "string"
-                                            },
-                                            "audioDestPortNo": {
-                                                "type": "string"
-                                            },
-                                            "destIPv6Address": {
-                                                "type": "string"
-                                            },
-                                            "ttl": {
-                                                "type": "string"
-                                            },
-                                            "activeMulticastEnabled": {
-                                                "type": "object"
-                                            },
-                                            "packagingFormat": {
-                                                "type": "string"
-                                            },
-                                            "FecInfo": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "fecRatio": {
-                                                        "type": "object"
-                                                    },
-                                                    "fecDestPortNo": {
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "Security": {
-                                        "type": "object",
-                                        "properties": {
-                                            "enabled": {
-                                                "type": "string"
-                                            },
-                                            "certificateType": {
-                                                "type": "string"
-                                            },
-                                            "SecurityAlgorithm": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "algorithmType": {
-                                                        "type": "string"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "SRTPMulticast": {
-                                        "type": "object",
-                                        "properties": {
-                                            "SRTPVideoDestPortNo": {
-                                                "type": "string"
-                                            },
-                                            "SRTPAudioDestPortNo": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            "Video": {
-                                "type": "object",
-                                "properties": {
-                                    "enabled": {
-                                        "type": "string"
-                                    },
-                                    "videoInputChannelID": {
-                                        "type": "object"
-                                    },
-                                    "videoCodecType": {
-                                        "type": "object"
-                                    },
-                                    "videoResolutionWidth": {
-                                        "type": "object"
-                                    },
-                                    "videoResolutionHeight": {
-                                        "type": "object"
-                                    },
-                                    "videoQualityControlType": {
-                                        "type": "object"
-                                    },
-                                    "constantBitRate": {
-                                        "type": "object"
-                                    },
-                                    "vbrUpperCap": {
-                                        "type": "object"
-                                    },
-                                    "vbrLowerCap": {
-                                        "type": "object"
-                                    },
-                                    "maxFrameRate": {
-                                        "type": "object"
-                                    },
-                                    "keyFrameInterval": {
-                                        "type": "string"
-                                    },
-                                    "rotationDegree": {
-                                        "type": "string"
-                                    },
-                                    "mirrorEnabled": {
-                                        "type": "string"
-                                    },
-                                    "snapShotImageType": {
-                                        "type": "string"
-                                    },
-                                    "Mpeg4Profile": {
-                                        "type": "string"
-                                    },
-                                    "H264Profile": {
-                                        "type": "string"
-                                    },
-                                    "SVACProfile": {
-                                        "type": "string"
-                                    },
-                                    "GovLength": {
-                                        "type": "string"
-                                    },
-                                    "SVC": {
-                                        "type": "object",
-                                        "properties": {
-                                            "enabled": {
-                                                "type": "string"
-                                            },
-                                            "SVCMode": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "smoothing": {
-                                        "type": "string"
-                                    },
-                                    "SmartCodec": {
-                                        "type": "object",
-                                        "properties": {
-                                            "enabled": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "vbrAverageCap": {
-                                        "type": "string"
-                                    },
-                                    "IntelligentInfoDisplayMethod": {
-                                        "type": "object"
-                                    }
-                                }
-                            },
-                            "Audio": {
-                                "type": "object",
-                                "properties": {
-                                    "enabled": {
-                                        "type": "string"
-                                    },
-                                    "audioInputChannelID": {
-                                        "type": "string"
-                                    },
-                                    "audioCompressionType": {
-                                        "type": "object"
-                                    },
-                                    "audioInboundCompressionType": {
-                                        "type": "object"
-                                    },
-                                    "audioBitRate": {
-                                        "type": "string"
-                                    },
-                                    "audioSamplingRate": {
-                                        "type": "string"
-                                    },
-                                    "audioResolution": {
-                                        "type": "string"
-                                    },
-                                    "VoiceChanger": {
-                                        "type": "object",
-                                        "properties": {
-                                            "enabled": {
-                                                "type": "string"
-                                            },
-                                            "level": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            "enableCABAC": {
+                            "videoInputChannelID": {
                                 "type": "string"
                             },
-                            "subStreamRecStatus": {
+                            "videoCodecType": {
                                 "type": "string"
                             },
-                            "customStreamEnable": {
-                                "type": "object",
-                                "properties": {
-                                    "StreamingChannel": {
-                                        "type": "object",
-                                        "properties": {
-                                            "id": {
-                                                "type": "string"
-                                            },
-                                            "channelName": {
-                                                "type": "string"
-                                            },
-                                            "enabled": {
-                                                "type": "string"
-                                            },
-                                            "Transport": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "maxPacketSize": {
-                                                        "type": "string"
-                                                    },
-                                                    "audioPacketLength": {
-                                                        "type": "string"
-                                                    },
-                                                    "audioInboundPacketLength": {
-                                                        "type": "string"
-                                                    },
-                                                    "audioInboundPortNo": {
-                                                        "type": "string"
-                                                    },
-                                                    "videoSourcePortNo": {
-                                                        "type": "string"
-                                                    },
-                                                    "audioSourcePortNo": {
-                                                        "type": "string"
-                                                    },
-                                                    "ControlProtocolList": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "ControlProtocol": {
-                                                                "type": "object",
-                                                                "properties": {
-                                                                    "streamingTransport": {
-                                                                        "type": "object"
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    "Unicast": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "enabled": {
-                                                                "type": "string"
-                                                            },
-                                                            "interfaceID": {
-                                                                "type": "string"
-                                                            },
-                                                            "rtpTransportType": {
-                                                                "type": "object"
-                                                            }
-                                                        }
-                                                    },
-                                                    "Multicast": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "enabled": {
-                                                                "type": "string"
-                                                            },
-                                                            "userTriggerThreshold": {
-                                                                "type": "string"
-                                                            },
-                                                            "destIPAddress": {
-                                                                "type": "string"
-                                                            },
-                                                            "videoDestPortNo": {
-                                                                "type": "string"
-                                                            },
-                                                            "audioDestPortNo": {
-                                                                "type": "string"
-                                                            },
-                                                            "destIPv6Address": {
-                                                                "type": "string"
-                                                            },
-                                                            "ttl": {
-                                                                "type": "string"
-                                                            },
-                                                            "activeMulticastEnabled": {
-                                                                "type": "object"
-                                                            },
-                                                            "packagingFormat": {
-                                                                "type": "string"
-                                                            },
-                                                            "FecInfo": {
-                                                                "type": "object",
-                                                                "properties": {
-                                                                    "fecRatio": {
-                                                                        "type": "object"
-                                                                    },
-                                                                    "fecDestPortNo": {
-                                                                        "type": "object"
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    "Security": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "enabled": {
-                                                                "type": "string"
-                                                            },
-                                                            "certificateType": {
-                                                                "type": "string"
-                                                            },
-                                                            "SecurityAlgorithm": {
-                                                                "type": "object",
-                                                                "properties": {
-                                                                    "algorithmType": {
-                                                                        "type": "string"
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    "SRTPMulticast": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "SRTPVideoDestPortNo": {
-                                                                "type": "string"
-                                                            },
-                                                            "SRTPAudioDestPortNo": {
-                                                                "type": "string"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "Video": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "enabled": {
-                                                        "type": "string"
-                                                    },
-                                                    "videoInputChannelID": {
-                                                        "type": "object"
-                                                    },
-                                                    "videoCodecType": {
-                                                        "type": "object"
-                                                    },
-                                                    "videoResolutionWidth": {
-                                                        "type": "object"
-                                                    },
-                                                    "videoResolutionHeight": {
-                                                        "type": "object"
-                                                    },
-                                                    "videoQualityControlType": {
-                                                        "type": "object"
-                                                    },
-                                                    "constantBitRate": {
-                                                        "type": "object"
-                                                    },
-                                                    "vbrUpperCap": {
-                                                        "type": "object"
-                                                    },
-                                                    "vbrLowerCap": {
-                                                        "type": "object"
-                                                    },
-                                                    "maxFrameRate": {
-                                                        "type": "object"
-                                                    },
-                                                    "keyFrameInterval": {
-                                                        "type": "string"
-                                                    },
-                                                    "rotationDegree": {
-                                                        "type": "string"
-                                                    },
-                                                    "mirrorEnabled": {
-                                                        "type": "string"
-                                                    },
-                                                    "snapShotImageType": {
-                                                        "type": "string"
-                                                    },
-                                                    "Mpeg4Profile": {
-                                                        "type": "string"
-                                                    },
-                                                    "H264Profile": {
-                                                        "type": "string"
-                                                    },
-                                                    "SVACProfile": {
-                                                        "type": "string"
-                                                    },
-                                                    "GovLength": {
-                                                        "type": "string"
-                                                    },
-                                                    "SVC": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "enabled": {
-                                                                "type": "string"
-                                                            },
-                                                            "SVCMode": {
-                                                                "type": "string"
-                                                            }
-                                                        }
-                                                    },
-                                                    "smoothing": {
-                                                        "type": "string"
-                                                    },
-                                                    "SmartCodec": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "enabled": {
-                                                                "type": "string"
-                                                            }
-                                                        }
-                                                    },
-                                                    "vbrAverageCap": {
-                                                        "type": "string"
-                                                    },
-                                                    "IntelligentInfoDisplayMethod": {
-                                                        "type": "object"
-                                                    }
-                                                }
-                                            },
-                                            "Audio": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "enabled": {
-                                                        "type": "string"
-                                                    },
-                                                    "audioInputChannelID": {
-                                                        "type": "string"
-                                                    },
-                                                    "audioCompressionType": {
-                                                        "type": "object"
-                                                    },
-                                                    "audioInboundCompressionType": {
-                                                        "type": "object"
-                                                    },
-                                                    "audioBitRate": {
-                                                        "type": "string"
-                                                    },
-                                                    "audioSamplingRate": {
-                                                        "type": "string"
-                                                    },
-                                                    "audioResolution": {
-                                                        "type": "string"
-                                                    },
-                                                    "VoiceChanger": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "enabled": {
-                                                                "type": "string"
-                                                            },
-                                                            "level": {
-                                                                "type": "string"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "enableCABAC": {
-                                                "type": "string"
-                                            },
-                                            "subStreamRecStatus": {
-                                                "type": "string"
-                                            },
-                                            "customStreamEnable": {
-                                                "type": "string"
-                                            },
-                                            "@version": {
-                                                "type": "string"
-                                            },
-                                            "@xmlns": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
+                            "videoScanType": {
+                                "type": "string"
+                            },
+                            "videoResolutionWidth": {
+                                "type": "string"
+                            },
+                            "videoResolutionHeight": {
+                                "type": "string"
+                            },
+                            "videoQualityControlType": {
+                                "type": "string"
+                            },
+                            "constantBitRate": {
+                                "type": "string"
+                            },
+                            "fixedQuality": {
+                                "type": "string"
+                            },
+                            "vbrUpperCap": {
+                                "type": "string"
+                            },
+                            "vbrLowerCap": {
+                                "type": "string"
+                            },
+                            "maxFrameRate": {
+                                "type": "string"
+                            },
+                            "keyFrameInterval": {
+                                "type": "string"
+                            },
+                            "snapShotImageType": {
+                                "type": "string"
+                            },
+                            "GovLength": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "Audio": {
+                        "type": "object",
+                        "properties": {
+                            "enabled": {
+                                "type": "string"
+                            },
+                            "audioInputChannelID": {
+                                "type": "string"
+                            },
+                            "audioCompressionType": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "id": "101",
+                    "channelName": "Camera 01",
+                    "enabled": "true",
+                    "Transport": {
+                        "ControlProtocolList": {
+                            "ControlProtocol": [
+                                {
+                                    "streamingTransport": "RTSP"
+                                },
+                                {
+                                    "streamingTransport": "HTTP"
+                                }
+                            ]
+                        },
+                        "Security": {
+                            "enabled": "true"
+                        }
+                    },
+                    "Video": {
+                        "enabled": "true",
+                        "videoInputChannelID": "1",
+                        "videoCodecType": "H.264",
+                        "videoScanType": "progressive",
+                        "videoResolutionWidth": "1280",
+                        "videoResolutionHeight": "720",
+                        "videoQualityControlType": "VBR",
+                        "constantBitRate": "2048",
+                        "fixedQuality": "60",
+                        "vbrUpperCap": "2048",
+                        "vbrLowerCap": "32",
+                        "maxFrameRate": "2500",
+                        "keyFrameInterval": "2000",
+                        "snapShotImageType": "JPEG",
+                        "GovLength": "50"
+                    },
+                    "Audio": {
+                        "enabled": "true",
+                        "audioInputChannelID": "1",
+                        "audioCompressionType": "G.711ulaw"
+                    }
+                }
+            },
+            "XML_StreamingChannelList": {
+                "title": "Root Type for XML_StreamingChannelList",
+                "description": "StreamingChannelList message in XML format",
+                "type": "object",
+                "properties": {
+                    "StreamingChannelList": {
+                        "type": "object",
+                        "properties": {
+                            "StreamingChannel": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/XML_StreamingChannel"
                                 }
                             },
                             "@version": {
@@ -2042,299 +1957,10 @@
                     }
                 },
                 "example": {
-                    "StreamingChannel": {
-                        "id": "",
-                        "channelName": "",
-                        "enabled": "",
-                        "Transport": {
-                            "maxPacketSize": "",
-                            "audioPacketLength": "",
-                            "audioInboundPacketLength": "",
-                            "audioInboundPortNo": "",
-                            "videoSourcePortNo": "",
-                            "audioSourcePortNo": "",
-                            "ControlProtocolList": {
-                                "ControlProtocol": {
-                                    "streamingTransport": {
-
-                                    }
-                                }
-                            },
-                            "Unicast": {
-                                "enabled": "",
-                                "interfaceID": "",
-                                "rtpTransportType": {
-
-                                }
-                            },
-                            "Multicast": {
-                                "enabled": "",
-                                "userTriggerThreshold": "",
-                                "destIPAddress": "",
-                                "videoDestPortNo": "",
-                                "audioDestPortNo": "",
-                                "destIPv6Address": "",
-                                "ttl": "",
-                                "activeMulticastEnabled": {
-
-                                },
-                                "packagingFormat": "",
-                                "FecInfo": {
-                                    "fecRatio": {
-
-                                    },
-                                    "fecDestPortNo": {
-
-                                    }
-                                }
-                            },
-                            "Security": {
-                                "enabled": "",
-                                "certificateType": "",
-                                "SecurityAlgorithm": {
-                                    "algorithmType": ""
-                                }
-                            },
-                            "SRTPMulticast": {
-                                "SRTPVideoDestPortNo": "",
-                                "SRTPAudioDestPortNo": ""
-                            }
-                        },
-                        "Video": {
-                            "enabled": "",
-                            "videoInputChannelID": {
-
-                            },
-                            "videoCodecType": {
-
-                            },
-                            "videoResolutionWidth": {
-
-                            },
-                            "videoResolutionHeight": {
-
-                            },
-                            "videoQualityControlType": {
-
-                            },
-                            "constantBitRate": {
-
-                            },
-                            "vbrUpperCap": {
-
-                            },
-                            "vbrLowerCap": {
-
-                            },
-                            "maxFrameRate": {
-
-                            },
-                            "keyFrameInterval": "",
-                            "rotationDegree": "",
-                            "mirrorEnabled": "",
-                            "snapShotImageType": "",
-                            "Mpeg4Profile": "",
-                            "H264Profile": "",
-                            "SVACProfile": "",
-                            "GovLength": "",
-                            "SVC": {
-                                "enabled": "",
-                                "SVCMode": ""
-                            },
-                            "smoothing": "",
-                            "SmartCodec": {
-                                "enabled": ""
-                            },
-                            "vbrAverageCap": "",
-                            "IntelligentInfoDisplayMethod": {
-
-                            }
-                        },
-                        "Audio": {
-                            "enabled": "",
-                            "audioInputChannelID": "",
-                            "audioCompressionType": {
-
-                            },
-                            "audioInboundCompressionType": {
-
-                            },
-                            "audioBitRate": "",
-                            "audioSamplingRate": "",
-                            "audioResolution": "",
-                            "VoiceChanger": {
-                                "enabled": "",
-                                "level": ""
-                            }
-                        },
-                        "enableCABAC": "",
-                        "subStreamRecStatus": "",
-                        "customStreamEnable": {
-                            "StreamingChannel": {
-                                "id": "",
-                                "channelName": "",
-                                "enabled": "",
-                                "Transport": {
-                                    "maxPacketSize": "",
-                                    "audioPacketLength": "",
-                                    "audioInboundPacketLength": "",
-                                    "audioInboundPortNo": "",
-                                    "videoSourcePortNo": "",
-                                    "audioSourcePortNo": "",
-                                    "ControlProtocolList": {
-                                        "ControlProtocol": {
-                                            "streamingTransport": {
-
-                                            }
-                                        }
-                                    },
-                                    "Unicast": {
-                                        "enabled": "",
-                                        "interfaceID": "",
-                                        "rtpTransportType": {
-
-                                        }
-                                    },
-                                    "Multicast": {
-                                        "enabled": "",
-                                        "userTriggerThreshold": "",
-                                        "destIPAddress": "",
-                                        "videoDestPortNo": "",
-                                        "audioDestPortNo": "",
-                                        "destIPv6Address": "",
-                                        "ttl": "",
-                                        "activeMulticastEnabled": {
-
-                                        },
-                                        "packagingFormat": "",
-                                        "FecInfo": {
-                                            "fecRatio": {
-
-                                            },
-                                            "fecDestPortNo": {
-
-                                            }
-                                        }
-                                    },
-                                    "Security": {
-                                        "enabled": "",
-                                        "certificateType": "",
-                                        "SecurityAlgorithm": {
-                                            "algorithmType": ""
-                                        }
-                                    },
-                                    "SRTPMulticast": {
-                                        "SRTPVideoDestPortNo": "",
-                                        "SRTPAudioDestPortNo": ""
-                                    }
-                                },
-                                "Video": {
-                                    "enabled": "",
-                                    "videoInputChannelID": {
-
-                                    },
-                                    "videoCodecType": {
-
-                                    },
-                                    "videoResolutionWidth": {
-
-                                    },
-                                    "videoResolutionHeight": {
-
-                                    },
-                                    "videoQualityControlType": {
-
-                                    },
-                                    "constantBitRate": {
-
-                                    },
-                                    "vbrUpperCap": {
-
-                                    },
-                                    "vbrLowerCap": {
-
-                                    },
-                                    "maxFrameRate": {
-
-                                    },
-                                    "keyFrameInterval": "",
-                                    "rotationDegree": "",
-                                    "mirrorEnabled": "",
-                                    "snapShotImageType": "",
-                                    "Mpeg4Profile": "",
-                                    "H264Profile": "",
-                                    "SVACProfile": "",
-                                    "GovLength": "",
-                                    "SVC": {
-                                        "enabled": "",
-                                        "SVCMode": ""
-                                    },
-                                    "smoothing": "",
-                                    "SmartCodec": {
-                                        "enabled": ""
-                                    },
-                                    "vbrAverageCap": "",
-                                    "IntelligentInfoDisplayMethod": {
-
-                                    }
-                                },
-                                "Audio": {
-                                    "enabled": "",
-                                    "audioInputChannelID": "",
-                                    "audioCompressionType": {
-
-                                    },
-                                    "audioInboundCompressionType": {
-
-                                    },
-                                    "audioBitRate": "",
-                                    "audioSamplingRate": "",
-                                    "audioResolution": "",
-                                    "VoiceChanger": {
-                                        "enabled": "",
-                                        "level": ""
-                                    }
-                                },
-                                "enableCABAC": "",
-                                "subStreamRecStatus": "",
-                                "customStreamEnable": "",
-                                "@version": "2.0",
-                                "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
-                            }
-                        },
+                    "StreamingChannelList": {
+                        "StreamingChannel": [],
                         "@version": "2.0",
                         "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
-                    }
-                }
-            },
-            "XML_StreamingChannelList": {
-                "title": "Root Type for XML_StreamingChannelList",
-                "description": "StreamingChannelList message in XML format",
-                "type": "object",
-                "properties": {
-                    "StreamingChannelList": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/XML_StreamingChannel"
-                        },
-                        "properties": {
-                            "StreamingChannel": {
-                                "type": "string"
-                            },
-                            "@version": {
-                                "type": "string"
-                            },
-                            "@StreamingChannelList message in XML formatxmlns": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                },
-                "example": {
-                    "StreamingChannelList": {
-                        "StreamingChannel": "",
-                        "@version": "2.0",
-                        "@StreamingChannelList message in XML formatxmlns": "http://www.isapi.org/ver20/XMLSchema"
                     }
                 }
             },
@@ -3126,7 +2752,7 @@
                                 "type": "string"
                             },
                             "deviceDescription": {
-                                "type": "object"
+                                "type": "string"
                             },
                             "deviceLocation": {
                                 "type": "string"
@@ -3212,7 +2838,7 @@
                                 "type": "string"
                             },
                             "deviceType": {
-                                "type": "object"
+                                "type": "string"
                             },
                             "telecontrolID": {
                                 "type": "string"
@@ -3227,7 +2853,7 @@
                                 "type": "string"
                             },
                             "actualFloorNum": {
-                                "type": "object"
+                                "type": "string"
                             },
                             "subChannelEnabled": {
                                 "type": "string"
@@ -3427,9 +3053,7 @@
                     "DeviceInfo": {
                         "deviceName": "",
                         "deviceID": "",
-                        "deviceDescription": {
-
-                        },
+                        "deviceDescription": "",
                         "deviceLocation": "",
                         "deviceStatus": "",
                         "DetailAbnormalStatus": {
@@ -3474,16 +3098,12 @@
                         "softwareVersion": "",
                         "capacity": "",
                         "usedCapacity": "",
-                        "deviceType": {
-
-                        },
+                        "deviceType": "",
                         "telecontrolID": "",
                         "supportBeep": "",
                         "supportVideoLoss": "",
                         "firmwareVersionInfo": "",
-                        "actualFloorNum": {
-
-                        },
+                        "actualFloorNum": "",
                         "subChannelEnabled": "",
                         "thrChannelEnabled": "",
                         "radarVersion": "",

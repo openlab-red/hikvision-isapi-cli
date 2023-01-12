@@ -5,17 +5,8 @@ import attr
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.root_type_for_xml_device_info_device_info_actual_floor_num import (
-        RootTypeForXMLDeviceInfoDeviceInfoActualFloorNum,
-    )
     from ..models.root_type_for_xml_device_info_device_info_detail_abnormal_status import (
         RootTypeForXMLDeviceInfoDeviceInfoDetailAbnormalStatus,
-    )
-    from ..models.root_type_for_xml_device_info_device_info_device_description import (
-        RootTypeForXMLDeviceInfoDeviceInfoDeviceDescription,
-    )
-    from ..models.root_type_for_xml_device_info_device_info_device_type import (
-        RootTypeForXMLDeviceInfoDeviceInfoDeviceType,
     )
     from ..models.root_type_for_xml_device_info_device_info_dock_station import (
         RootTypeForXMLDeviceInfoDeviceInfoDockStation,
@@ -46,7 +37,7 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
     Attributes:
         device_name (Union[Unset, str]):
         device_id (Union[Unset, str]):
-        device_description (Union[Unset, RootTypeForXMLDeviceInfoDeviceInfoDeviceDescription]):
+        device_description (Union[Unset, str]):
         device_location (Union[Unset, str]):
         device_status (Union[Unset, str]):
         detail_abnormal_status (Union[Unset, RootTypeForXMLDeviceInfoDeviceInfoDetailAbnormalStatus]):
@@ -66,12 +57,12 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
         software_version (Union[Unset, str]):
         capacity (Union[Unset, str]):
         used_capacity (Union[Unset, str]):
-        device_type (Union[Unset, RootTypeForXMLDeviceInfoDeviceInfoDeviceType]):
+        device_type (Union[Unset, str]):
         telecontrol_id (Union[Unset, str]):
         support_beep (Union[Unset, str]):
         support_video_loss (Union[Unset, str]):
         firmware_version_info (Union[Unset, str]):
-        actual_floor_num (Union[Unset, RootTypeForXMLDeviceInfoDeviceInfoActualFloorNum]):
+        actual_floor_num (Union[Unset, str]):
         sub_channel_enabled (Union[Unset, str]):
         thr_channel_enabled (Union[Unset, str]):
         radar_version (Union[Unset, str]):
@@ -120,7 +111,7 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
 
     device_name: Union[Unset, str] = UNSET
     device_id: Union[Unset, str] = UNSET
-    device_description: Union[Unset, "RootTypeForXMLDeviceInfoDeviceInfoDeviceDescription"] = UNSET
+    device_description: Union[Unset, str] = UNSET
     device_location: Union[Unset, str] = UNSET
     device_status: Union[Unset, str] = UNSET
     detail_abnormal_status: Union[Unset, "RootTypeForXMLDeviceInfoDeviceInfoDetailAbnormalStatus"] = UNSET
@@ -140,12 +131,12 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
     software_version: Union[Unset, str] = UNSET
     capacity: Union[Unset, str] = UNSET
     used_capacity: Union[Unset, str] = UNSET
-    device_type: Union[Unset, "RootTypeForXMLDeviceInfoDeviceInfoDeviceType"] = UNSET
+    device_type: Union[Unset, str] = UNSET
     telecontrol_id: Union[Unset, str] = UNSET
     support_beep: Union[Unset, str] = UNSET
     support_video_loss: Union[Unset, str] = UNSET
     firmware_version_info: Union[Unset, str] = UNSET
-    actual_floor_num: Union[Unset, "RootTypeForXMLDeviceInfoDeviceInfoActualFloorNum"] = UNSET
+    actual_floor_num: Union[Unset, str] = UNSET
     sub_channel_enabled: Union[Unset, str] = UNSET
     thr_channel_enabled: Union[Unset, str] = UNSET
     radar_version: Union[Unset, str] = UNSET
@@ -195,10 +186,7 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
     def to_dict(self) -> Dict[str, Any]:
         device_name = self.device_name
         device_id = self.device_id
-        device_description: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.device_description, Unset):
-            device_description = self.device_description.to_dict()
-
+        device_description = self.device_description
         device_location = self.device_location
         device_status = self.device_status
         detail_abnormal_status: Union[Unset, Dict[str, Any]] = UNSET
@@ -221,18 +209,12 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
         software_version = self.software_version
         capacity = self.capacity
         used_capacity = self.used_capacity
-        device_type: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.device_type, Unset):
-            device_type = self.device_type.to_dict()
-
+        device_type = self.device_type
         telecontrol_id = self.telecontrol_id
         support_beep = self.support_beep
         support_video_loss = self.support_video_loss
         firmware_version_info = self.firmware_version_info
-        actual_floor_num: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.actual_floor_num, Unset):
-            actual_floor_num = self.actual_floor_num.to_dict()
-
+        actual_floor_num = self.actual_floor_num
         sub_channel_enabled = self.sub_channel_enabled
         thr_channel_enabled = self.thr_channel_enabled
         radar_version = self.radar_version
@@ -448,17 +430,8 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.root_type_for_xml_device_info_device_info_actual_floor_num import (
-            RootTypeForXMLDeviceInfoDeviceInfoActualFloorNum,
-        )
         from ..models.root_type_for_xml_device_info_device_info_detail_abnormal_status import (
             RootTypeForXMLDeviceInfoDeviceInfoDetailAbnormalStatus,
-        )
-        from ..models.root_type_for_xml_device_info_device_info_device_description import (
-            RootTypeForXMLDeviceInfoDeviceInfoDeviceDescription,
-        )
-        from ..models.root_type_for_xml_device_info_device_info_device_type import (
-            RootTypeForXMLDeviceInfoDeviceInfoDeviceType,
         )
         from ..models.root_type_for_xml_device_info_device_info_dock_station import (
             RootTypeForXMLDeviceInfoDeviceInfoDockStation,
@@ -484,12 +457,7 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
 
         device_id = d.pop("deviceID", UNSET)
 
-        _device_description = d.pop("deviceDescription", UNSET)
-        device_description: Union[Unset, RootTypeForXMLDeviceInfoDeviceInfoDeviceDescription]
-        if isinstance(_device_description, Unset):
-            device_description = UNSET
-        else:
-            device_description = RootTypeForXMLDeviceInfoDeviceInfoDeviceDescription.from_dict(_device_description)
+        device_description = d.pop("deviceDescription", UNSET)
 
         device_location = d.pop("deviceLocation", UNSET)
 
@@ -536,12 +504,7 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
 
         used_capacity = d.pop("usedCapacity", UNSET)
 
-        _device_type = d.pop("deviceType", UNSET)
-        device_type: Union[Unset, RootTypeForXMLDeviceInfoDeviceInfoDeviceType]
-        if isinstance(_device_type, Unset):
-            device_type = UNSET
-        else:
-            device_type = RootTypeForXMLDeviceInfoDeviceInfoDeviceType.from_dict(_device_type)
+        device_type = d.pop("deviceType", UNSET)
 
         telecontrol_id = d.pop("telecontrolID", UNSET)
 
@@ -551,12 +514,7 @@ class RootTypeForXMLDeviceInfoDeviceInfo:
 
         firmware_version_info = d.pop("firmwareVersionInfo", UNSET)
 
-        _actual_floor_num = d.pop("actualFloorNum", UNSET)
-        actual_floor_num: Union[Unset, RootTypeForXMLDeviceInfoDeviceInfoActualFloorNum]
-        if isinstance(_actual_floor_num, Unset):
-            actual_floor_num = UNSET
-        else:
-            actual_floor_num = RootTypeForXMLDeviceInfoDeviceInfoActualFloorNum.from_dict(_actual_floor_num)
+        actual_floor_num = d.pop("actualFloorNum", UNSET)
 
         sub_channel_enabled = d.pop("subChannelEnabled", UNSET)
 

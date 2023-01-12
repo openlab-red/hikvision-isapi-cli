@@ -29,7 +29,6 @@ def _get_kwargs(
         "headers": headers,
         "cookies": cookies,
         "timeout": client.get_timeout(),
-        "auth": client.get_auth(),
         "data": xmltodict.unparse(json_json_body),
     }
 
@@ -63,7 +62,7 @@ def sync_detailed(
 
     Args:
         json_body (RootTypeForXMLDeviceInfo): XML message about device information Example:
-            {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': {},
+            {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': '',
             'deviceLocation': '', 'deviceStatus': '', 'DetailAbnormalStatus': {'hardDiskFull': {},
             'hardDiskError': {}, 'ethernetBroken': {}, 'ipaddrConflict': {}, 'illegalAccess': {},
             'recordError': {}, 'raidLogicDiskError': {}, 'spareWorkDeviceError': {}}, 'systemContact':
@@ -71,8 +70,8 @@ def sync_detailed(
             'firmwareReleasedDate': '', 'bootVersion': '', 'bootReleasedDate': '', 'hardwareVersion':
             '', 'encoderVersion': '', 'encoderReleasedDate': '', 'decoderVersion': '',
             'decoderReleasedDate': '', 'softwareVersion': '', 'capacity': '', 'usedCapacity': '',
-            'deviceType': {}, 'telecontrolID': '', 'supportBeep': '', 'supportVideoLoss': '',
-            'firmwareVersionInfo': '', 'actualFloorNum': {}, 'subChannelEnabled': '',
+            'deviceType': '', 'telecontrolID': '', 'supportBeep': '', 'supportVideoLoss': '',
+            'firmwareVersionInfo': '', 'actualFloorNum': '', 'subChannelEnabled': '',
             'thrChannelEnabled': '', 'radarVersion': '', 'cameraModuleVersion': '', 'mainversion': '',
             'subversion': '', 'upgradeversion': '', 'customizeversion': '', 'companyName': '',
             'copyright': '', 'systemName': '', 'systemStatus': '', 'isLeaderDevice': '',
@@ -102,8 +101,7 @@ def sync_detailed(
         json_body=json_body,
     )
 
-    response = httpx.request(
-        verify=client.verify_ssl,
+    response = client._api.request(
         **kwargs,
     )
 
@@ -119,7 +117,7 @@ def sync(
 
     Args:
         json_body (RootTypeForXMLDeviceInfo): XML message about device information Example:
-            {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': {},
+            {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': '',
             'deviceLocation': '', 'deviceStatus': '', 'DetailAbnormalStatus': {'hardDiskFull': {},
             'hardDiskError': {}, 'ethernetBroken': {}, 'ipaddrConflict': {}, 'illegalAccess': {},
             'recordError': {}, 'raidLogicDiskError': {}, 'spareWorkDeviceError': {}}, 'systemContact':
@@ -127,8 +125,8 @@ def sync(
             'firmwareReleasedDate': '', 'bootVersion': '', 'bootReleasedDate': '', 'hardwareVersion':
             '', 'encoderVersion': '', 'encoderReleasedDate': '', 'decoderVersion': '',
             'decoderReleasedDate': '', 'softwareVersion': '', 'capacity': '', 'usedCapacity': '',
-            'deviceType': {}, 'telecontrolID': '', 'supportBeep': '', 'supportVideoLoss': '',
-            'firmwareVersionInfo': '', 'actualFloorNum': {}, 'subChannelEnabled': '',
+            'deviceType': '', 'telecontrolID': '', 'supportBeep': '', 'supportVideoLoss': '',
+            'firmwareVersionInfo': '', 'actualFloorNum': '', 'subChannelEnabled': '',
             'thrChannelEnabled': '', 'radarVersion': '', 'cameraModuleVersion': '', 'mainversion': '',
             'subversion': '', 'upgradeversion': '', 'customizeversion': '', 'companyName': '',
             'copyright': '', 'systemName': '', 'systemStatus': '', 'isLeaderDevice': '',
@@ -168,7 +166,7 @@ async def asyncio_detailed(
 
     Args:
         json_body (RootTypeForXMLDeviceInfo): XML message about device information Example:
-            {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': {},
+            {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': '',
             'deviceLocation': '', 'deviceStatus': '', 'DetailAbnormalStatus': {'hardDiskFull': {},
             'hardDiskError': {}, 'ethernetBroken': {}, 'ipaddrConflict': {}, 'illegalAccess': {},
             'recordError': {}, 'raidLogicDiskError': {}, 'spareWorkDeviceError': {}}, 'systemContact':
@@ -176,8 +174,8 @@ async def asyncio_detailed(
             'firmwareReleasedDate': '', 'bootVersion': '', 'bootReleasedDate': '', 'hardwareVersion':
             '', 'encoderVersion': '', 'encoderReleasedDate': '', 'decoderVersion': '',
             'decoderReleasedDate': '', 'softwareVersion': '', 'capacity': '', 'usedCapacity': '',
-            'deviceType': {}, 'telecontrolID': '', 'supportBeep': '', 'supportVideoLoss': '',
-            'firmwareVersionInfo': '', 'actualFloorNum': {}, 'subChannelEnabled': '',
+            'deviceType': '', 'telecontrolID': '', 'supportBeep': '', 'supportVideoLoss': '',
+            'firmwareVersionInfo': '', 'actualFloorNum': '', 'subChannelEnabled': '',
             'thrChannelEnabled': '', 'radarVersion': '', 'cameraModuleVersion': '', 'mainversion': '',
             'subversion': '', 'upgradeversion': '', 'customizeversion': '', 'companyName': '',
             'copyright': '', 'systemName': '', 'systemStatus': '', 'isLeaderDevice': '',
@@ -207,8 +205,7 @@ async def asyncio_detailed(
         json_body=json_body,
     )
 
-    async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.request(**kwargs)
+    response = await client._asyncio_api.request(**kwargs)
 
     return _build_response(client=client, response=response)
 
@@ -222,7 +219,7 @@ async def asyncio(
 
     Args:
         json_body (RootTypeForXMLDeviceInfo): XML message about device information Example:
-            {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': {},
+            {'DeviceInfo': {'deviceName': '', 'deviceID': '', 'deviceDescription': '',
             'deviceLocation': '', 'deviceStatus': '', 'DetailAbnormalStatus': {'hardDiskFull': {},
             'hardDiskError': {}, 'ethernetBroken': {}, 'ipaddrConflict': {}, 'illegalAccess': {},
             'recordError': {}, 'raidLogicDiskError': {}, 'spareWorkDeviceError': {}}, 'systemContact':
@@ -230,8 +227,8 @@ async def asyncio(
             'firmwareReleasedDate': '', 'bootVersion': '', 'bootReleasedDate': '', 'hardwareVersion':
             '', 'encoderVersion': '', 'encoderReleasedDate': '', 'decoderVersion': '',
             'decoderReleasedDate': '', 'softwareVersion': '', 'capacity': '', 'usedCapacity': '',
-            'deviceType': {}, 'telecontrolID': '', 'supportBeep': '', 'supportVideoLoss': '',
-            'firmwareVersionInfo': '', 'actualFloorNum': {}, 'subChannelEnabled': '',
+            'deviceType': '', 'telecontrolID': '', 'supportBeep': '', 'supportVideoLoss': '',
+            'firmwareVersionInfo': '', 'actualFloorNum': '', 'subChannelEnabled': '',
             'thrChannelEnabled': '', 'radarVersion': '', 'cameraModuleVersion': '', 'mainversion': '',
             'subversion': '', 'upgradeversion': '', 'customizeversion': '', 'companyName': '',
             'copyright': '', 'systemName': '', 'systemStatus': '', 'isLeaderDevice': '',
