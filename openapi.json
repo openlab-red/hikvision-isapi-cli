@@ -1,0 +1,3735 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Hikvision ISAPI",
+        "version": "1.0.0",
+        "description": "Hikvision ISAPI",
+        "contact": {
+            "name": "Mattia Mascia",
+            "email": "mmascia@redhat.com"
+        },
+        "license": {
+            "name": "GNU AGPLv3",
+            "url": "https://www.gnu.org/licenses/agpl.txt"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://192.0.0.65:8000",
+            "description": "Hikvision URL device"
+        }
+    ],
+    "paths": {
+        "/ISAPI/System/capabilities": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "System"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "capabilties",
+                "summary": "capabilties",
+                "description": "capabilties"
+            }
+        },
+        "/ISAPI/Streaming/status": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Streaming"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "status",
+                "summary": "status",
+                "description": "status"
+            }
+        },
+        "/ISAPI/Streaming/encryption": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Streaming"
+                ],
+                "parameters": [
+                    {
+                        "name": "format",
+                        "schema": {
+                            "type": "string",
+                            "example": "json"
+                        },
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "encryptionFormatJson",
+                "summary": "encryption?format=json",
+                "description": "encryption?format=json"
+            }
+        },
+        "/ISAPI/Streaming/index": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Streaming"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "index1",
+                "summary": "index",
+                "description": "index"
+            }
+        },
+        "/ISAPI/VideoIntercom/capabilities": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "VideoIntercom"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "capabilities1",
+                "summary": "capabilities",
+                "description": "capabilities"
+            }
+        },
+        "/ISAPI/VideoIntercom/deviceId": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "VideoIntercom"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "deviceid",
+                "summary": "deviceId",
+                "description": "deviceId"
+            }
+        },
+        "/ISAPI/VideoIntercom/deviceId/capabilities": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "VideoIntercom"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "deviceidCapabilities",
+                "summary": "deviceId/capabilities",
+                "description": "deviceId/capabilities"
+            }
+        },
+        "/ISAPI/VideoIntercom/deviceCommunication": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "VideoIntercom"
+                ],
+                "parameters": [
+                    {
+                        "name": "format",
+                        "schema": {
+                            "type": "string",
+                            "example": "json"
+                        },
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "devicecommunicationFormatJson",
+                "summary": "deviceCommunication?format=json",
+                "description": "deviceCommunication?format=json"
+            }
+        },
+        "/ISAPI/VideoIntercom/callStatus": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "VideoIntercom"
+                ],
+                "parameters": [
+                    {
+                        "examples": {
+                            "json": {
+                                "value": "\"json\""
+                            }
+                        },
+                        "name": "format",
+                        "schema": {
+                            "type": "string",
+                            "example": "json"
+                        },
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JSON_CallStatus"
+                                },
+                                "examples": {
+                                    "CallStatus": {
+                                        "value": {
+                                            "CallStatus": {
+                                                "status": "idle"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "operationId": "callstatus",
+                "summary": "callStatus",
+                "description": "callStatus"
+            }
+        },
+        "/ISAPI/VideoIntercom/callStatus/capabilities": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "VideoIntercom"
+                ],
+                "parameters": [
+                    {
+                        "name": "format",
+                        "schema": {
+                            "type": "string",
+                            "example": "json"
+                        },
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JSON_Cap_CallStatus"
+                                },
+                                "examples": {
+                                    "CallStatusCAP": {
+                                        "value": {
+                                            "CallStatus": {
+                                                "status": {
+                                                    "@opt": [
+                                                        "idle",
+                                                        "ring",
+                                                        "onCall"
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "operationId": "callstatusCapabilitiesFormatJson",
+                "summary": "callStatus/capabilities?format=json",
+                "description": "callStatus/capabilities?format=json"
+            }
+        },
+        "/ISAPI/Security/users": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Security"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "users",
+                "summary": "users",
+                "description": "users"
+            }
+        },
+        "/ISAPI/Snapshot/channels": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Snapshot"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "channels2",
+                "summary": "channels",
+                "description": "channels"
+            }
+        },
+        "/ISAPI/AccessControl/RemoteControl/door": {
+            "summary": "Remotely control the door or elevator."
+        },
+        "/ISAPI/Security/UserPermission/{userId}": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Security"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "userpermission1",
+                "summary": "UserPermission/1",
+                "description": "UserPermission/1"
+            },
+            "parameters": [
+                {
+                    "examples": {
+                        "userId": {
+                            "value": "1"
+                        }
+                    },
+                    "name": "userId",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/ISAPI/Streaming/channels/{channelId}/capabilities": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Streaming"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "channels1Capabilities",
+                "summary": "channels/1/capabilities",
+                "description": "channels/1/capabilities"
+            },
+            "parameters": [
+                {
+                    "examples": {
+                        "channelId": {
+                            "value": "101"
+                        }
+                    },
+                    "name": "channelId",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/ISAPI/Streaming/channels/{channelId}/picture": {
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Streaming"
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "operationId": "channels1Picture",
+                "summary": "channels/1/picture",
+                "description": "channels/1/picture"
+            },
+            "parameters": [
+                {
+                    "examples": {
+                        "channelId": {
+                            "value": "101"
+                        }
+                    },
+                    "name": "channelId",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/ISAPI/AccessControl/capabilities": {
+            "summary": "Get the functional capability of access control.",
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "AccessControl"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_Cap_AccessControl"
+                                },
+                                "examples": {
+                                    "capabilities": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AccessControl version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\n    <isSupportUserInfo>true</isSupportUserInfo>\n    <isSupportDoorCfg>true</isSupportDoorCfg>\n    <isSupportCardInfo>true</isSupportCardInfo>\n    <EmployeeNoInfo>\n        <employeeNo min=\"1\" max=\"32\">1</employeeNo>\n        <characterType opt=\"any,number\">number</characterType>\n    </EmployeeNoInfo>\n    <isSupportDeployInfo>true</isSupportDeployInfo>\n    <isSupportEventCardLinkageCfg>true</isSupportEventCardLinkageCfg>\n    <isSupportClearEventCardLinkageCfg>true</isSupportClearEventCardLinkageCfg>\n    <isSupportCaptureCardInfo>true</isSupportCaptureCardInfo>\n</AccessControl>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                },
+                                "examples": {
+                                    "BadRequest": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ResponseStatus version=\"1.0\" xmlns=\"http://www.std-cgi.com/ver10/XMLSchema\">\n    <requestURL>/ISAPI/AccessControl/capabilities</requestURL>\n    <statusCode>4</statusCode>\n    <statusString>Invalid Operation</statusString>\n    <subStatusCode>methodNotAllowed</subStatusCode>\n    <errorCode>1073741828</errorCode>\n    <errorMsg>http method is not allowed</errorMsg>\n</ResponseStatus>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Method Not Allowed"
+                    }
+                },
+                "operationId": "capabilities",
+                "summary": "capabilities",
+                "description": "capabilities"
+            }
+        },
+        "/ISAPI/AccessControl/RemoteControl/door/{doorId}": {
+            "put": {
+                "requestBody": {
+                    "description": "Most of OpenAPI generator do not support text/xml or application/xml.\nThe client will covert based on the resource name.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/XML_RemoteControlDoor"
+                            },
+                            "examples": {
+                                "XML_RemoteControlDoor": {
+                                    "value": "<RemoteControlDoor version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\n    <cmd>open</cmd>\n</RemoteControlDoor>"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "ISAPI",
+                    "AccessControl",
+                    "RemoteControl"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                },
+                                "examples": {
+                                    "Door": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ResponseStatus version=\"1.0\" xmlns=\"http://www.std-cgi.com/ver10/XMLSchema\">\n    <requestURL>/ISAPI/AccessControl/RemoteControl/door/1</requestURL>\n    <statusCode>1</statusCode>\n    <statusString>OK</statusString>\n    <subStatusCode>ok</subStatusCode>\n</ResponseStatus>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "operationId": "door",
+                "summary": "door/1",
+                "description": "door/1"
+            },
+            "parameters": [
+                {
+                    "examples": {
+                        "DoorId": {
+                            "value": "1"
+                        }
+                    },
+                    "name": "doorId",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/ISAPI/AccessControl/RemoteControl/door/capabilities": {
+            "summary": "Get the capability of remotely controlling the door or elevator.",
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "AccessControl",
+                    "RemoteControl"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_Cap_RemoteControlDoor"
+                                },
+                                "examples": {
+                                    "RemoteControlDoorCap": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RemoteControlDoor  version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\n    <doorNo min=\"1\" max=\"2\"/>\n    <cmd opt=\"open,alwaysOpen,resume\"/>\n</RemoteControlDoor>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                },
+                                "examples": {
+                                    "BadRequest": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ResponseStatus version=\"1.0\" xmlns=\"http://www.std-cgi.com/ver10/XMLSchema\">\n    <requestURL>/ISAPI/AccessControl/RemoteControl/door/capabilities</requestURL>\n    <statusCode>4</statusCode>\n    <statusString>Invalid Operation</statusString>\n    <subStatusCode>methodNotAllowed</subStatusCode>\n    <errorCode>1073741828</errorCode>\n    <errorMsg>http method is not allowed</errorMsg>\n</ResponseStatus>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Method Not Allowed"
+                    }
+                },
+                "operationId": "doorCapabilities",
+                "summary": "door/capabilities",
+                "description": "door/capabilities"
+            }
+        },
+        "/ISAPI/Security/userCheck": {
+            "summary": "Log in to the device by digest.",
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Security"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_userCheck"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "operationId": "usercheck",
+                "summary": "userCheck",
+                "description": "userCheck"
+            }
+        },
+        "/ISAPI/Streaming/channels": {
+            "summary": "Get the encoding parameters of multiple channels.",
+            "description": "Get the encoding parameters of multiple channels.",
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "Streaming"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_StreamingChannelList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "Get the encoding parameters of multiple channels.",
+                "description": "Get the encoding parameters of multiple channels."
+            }
+        },
+        "/ISAPI/System/deviceInfo": {
+            "summary": "Operations about the device information.",
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "System"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_DeviceInfo"
+                                },
+                                "examples": {
+                                    "DeviceInfo": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<DeviceInfo version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\n    <deviceName>OUTDOOR STATION</deviceName>\n    <deviceID>xxxxxx-xxxx-xxx-xxx-xxx</deviceID>\n    <deviceDescription>\tVis</deviceDescription>\n    <deviceLocation>STD-CGI</deviceLocation>\n    <systemContact>STD-CGI</systemContact>\n    <model>DS-KV8113-WME1</model>\n    <serialNumber>DS-KV8113-WME1-xxxxxxxxxxxxxxx</serialNumber>\n    <macAddress>xx:xx:xx:xx:xx:xx</macAddress>\n    <firmwareVersion>V2.xx.xx</firmwareVersion>\n    <firmwareReleasedDate>build xxxxx</firmwareReleasedDate>\n    <bootVersion>xxxxxx</bootVersion>\n    <bootReleasedDate>xxxxxx</bootReleasedDate>\n    <hardwareVersion>0x0</hardwareVersion>\n    <encoderVersion>V4.0</encoderVersion>\n    <encoderReleasedDate>build xxxxx</encoderReleasedDate>\n    <deviceType>\tVis</deviceType>\n    <telecontrolID>88</telecontrolID>\n    <supportBeep>true</supportBeep>\n    <supportVideoLoss>true</supportVideoLoss>\n    <alarmOutNum>2</alarmOutNum>\n    <alarmInNum>4</alarmInNum>\n    <RS485Num>1</RS485Num>\n    <customizedInfo></customizedInfo>\n</DeviceInfo>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                },
+                                "examples": {
+                                    "BadRequest": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ResponseStatus version=\"1.0\" xmlns=\"http://www.std-cgi.com/ver10/XMLSchema\">\n    <requestURL>/ISAPI/System/deviceInfo</requestURL>\n    <statusCode>4</statusCode>\n    <statusString>Invalid Operation</statusString>\n    <subStatusCode>methodNotAllowed</subStatusCode>\n    <errorCode>1073741828</errorCode>\n    <errorMsg>http method is not allowed</errorMsg>\n</ResponseStatus>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Method Not Allowed"
+                    }
+                },
+                "operationId": "deviceinfo",
+                "summary": "deviceInfo",
+                "description": "deviceInfo"
+            },
+            "put": {
+                "requestBody": {
+                    "description": "Most of OpenAPI generator do not support text/xml or application/xml.\nThe client will covert based on the resource name.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/XML_DeviceInfo"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                }
+                            }
+                        },
+                        "description": "Modified"
+                    }
+                },
+                "summary": "Set the device information."
+            }
+        },
+        "/ISAPI/System/Network/interfaces": {
+            "summary": "Get the information of multiple network interfaces.",
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_NetworkInterfaceList"
+                                },
+                                "examples": {
+                                    "NetworkInterfaceList": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<NetworkInterfaceList version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\n  <NetworkInterface>\n    <id>1</id>\n    <IPAddress>\n      <ipVersion>v4</ipVersion>\n      <addressingType>static</addressingType>\n      <ipAddress>172.6.64.7</ipAddress>\n      <subnetMask>255.255.255.0</subnetMask>\n      <DefaultGateway>\n        <ipAddress>172.6.64.1</ipAddress>\n      </DefaultGateway>\n      <PrimaryDNS>\n        <ipAddress>192.0.0.200</ipAddress>\n      </PrimaryDNS>\n    </IPAddress>\n    <Discovery>\n      <UPnP>\n        <enabled>true</enabled>\n      </UPnP>\n      <Zeroconf>\n        <enabled>true</enabled>\n      </Zeroconf>\n    </Discovery>\n    <Link>\n      <MACAddress> 00:40:48:4C:7F:F2</MACAddress>\n      <autoNegotiation>true</autoNegotiation>\n      <speed>1000</speed>\n      <duplex>full</duplex>\n      <MTU>1500</MTU>\n    </Link>\n  </NetworkInterface>\n</NetworkInterfaceList>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Network Interface List"
+                    }
+                },
+                "summary": "Get the information of multiple network interfaces."
+            }
+        },
+        "/ISAPI/System/TwoWayAudio/channels": {
+            "summary": "Get audio parameters of all two-way audio channels.",
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "System",
+                    "TwoWayAudio"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_TwoWayAudioChannelList"
+                                },
+                                "examples": {
+                                    "TwoWayAudioChannelList": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<TwoWayAudioChannelList version=\"2.0\" xmlns=\"http://www.isapi.com/ver20/XMLSchema\">\n  <TwoWayAudioChannel version=\"2.0\" xmlns=\"http://www.isapi.com/ver20/XMLSchema\">\n    <id>1</id>\n    <enabled>false</enabled>\n    <audioCompressionType>G.711ulaw</audioCompressionType>\n    <audioInputType>MicIn</audioInputType>\n    <speakerVolume>50</speakerVolume>\n    <noisereduce>false</noisereduce>\n  </TwoWayAudioChannel>\n</TwoWayAudioChannelList>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                }
+                            }
+                        },
+                        "description": "Method Not Allowed"
+                    }
+                },
+                "operationId": "channels",
+                "summary": "channels",
+                "description": "channels"
+            }
+        },
+        "/ISAPI/System/TwoWayAudio/channels/{channelId}/audioData": {
+            "summary": "Receive or send audio data from or to a specific two-way audio channel.",
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "System",
+                    "TwoWayAudio"
+                ],
+                "parameters": [
+                    {
+                        "name": "sessionId",
+                        "description": "communication session ID, which is required when the two-way audio is started between multiple channels and a channel; otherwise, the session ID is not required.",
+                        "schema": {
+                            "type": "string",
+                            "example": "le4bckh5l7tzbkxu4uzjh5takgmdhu22"
+                        },
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/octet-stream": {
+                                "schema": {
+                                    "format": "binary",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": "(Binary audio data)"
+                    },
+                    "400": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                }
+                            }
+                        },
+                        "description": "Method not allowed"
+                    }
+                },
+                "operationId": "channels1Audiodata",
+                "summary": "Receive audio data from a specific two-way audio channel.",
+                "description": ""
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/octet-stream": {
+                            "schema": {
+                                "format": "binary",
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "parameters": [
+                    {
+                        "name": "sessionId",
+                        "description": "communication session ID, which is required when the two-way audio is started between multiple channels and a channel; otherwise, the session ID is not required.",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                }
+                            }
+                        },
+                        "description": "Ok"
+                    }
+                },
+                "summary": "Send audio data to a specific two-way audio channel."
+            },
+            "parameters": [
+                {
+                    "examples": {
+                        "channelId": {
+                            "value": "1"
+                        }
+                    },
+                    "name": "channelId",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/ISAPI/System/TwoWayAudio/channels/{channelId}/close": {
+            "summary": "Stop two-way audio of a specific channel",
+            "put": {
+                "tags": [
+                    "ISAPI",
+                    "System",
+                    "TwoWayAudio"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                },
+                                "examples": {
+                                    "TwoWayAudioOk": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ResponseStatus version=\"2.0\" xmlns=\"http://www.isapi.com/ver20/XMLSchema\">\n  <requestURL>/ISAPI/System/TwoWayAudio/channels/1/close</requestURL>\n  <statusCode>1</statusCode>\n  <statusString>OK</statusString>\n  <subStatusCode>ok</subStatusCode>\n</ResponseStatus>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "operationId": "channels1Close",
+                "summary": "channels/1/close",
+                "description": "channels/1/close"
+            },
+            "parameters": [
+                {
+                    "examples": {
+                        "channelId": {
+                            "value": "1"
+                        }
+                    },
+                    "name": "channelId",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/ISAPI/System/TwoWayAudio/channels/{channelId}/open": {
+            "summary": "Start two-way audio of a specific channel.",
+            "put": {
+                "tags": [
+                    "ISAPI",
+                    "System",
+                    "TwoWayAudio"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_TwoWayAudioSession"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "operationId": "channels1Open",
+                "summary": "channels/1/open",
+                "description": "channels/1/open"
+            },
+            "parameters": [
+                {
+                    "examples": {
+                        "channelId": {
+                            "value": "1"
+                        }
+                    },
+                    "name": "channelId",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        },
+        "/ISAPI/System/Video/inputs/channels": {
+            "summary": "Get the configuration of all video input channels of the device.",
+            "get": {
+                "tags": [
+                    "ISAPI",
+                    "System",
+                    "Video"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_VideoInputChannelList"
+                                },
+                                "examples": {
+                                    "VideoInputChannelList": {
+                                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VideoInputChannelList version=\"2.0\" xmlns=\"http://www.isapi.org/ver20/XMLSchema\">\n    <VideoInputChannel>\n        <id>1</id>\n        <inputPort>1</inputPort>\n        <name>Camera 01</name>\n        <videoFormat>PAL</videoFormat>\n    </VideoInputChannel>\n</VideoInputChannelList>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/XML_ResponseStatus"
+                                }
+                            }
+                        },
+                        "description": "Method Not Allowed"
+                    }
+                },
+                "operationId": "inputsChannels",
+                "summary": "inputs/channels",
+                "description": "inputs/channels"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "JSON_CallStatus": {
+                "title": "Root Type for CallStatus",
+                "description": "JSON message about the call status",
+                "type": "object",
+                "properties": {
+                    "CallStatus": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "CallStatus": {
+                        "status": "idle"
+                    }
+                }
+            },
+            "JSON_ResponseStatus": {
+                "title": "Root Type for JSON_ResponseStatus",
+                "description": "JSON message about response status",
+                "type": "object",
+                "properties": {
+                    "requestURL": {
+                        "type": "string"
+                    },
+                    "statusCode": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "statusString": {
+                        "type": "string"
+                    },
+                    "subStatusCode": {
+                        "type": "string"
+                    },
+                    "errorCode": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "errorMsg": {
+                        "type": "string"
+                    },
+                    "MErrCode": {
+                        "type": "string"
+                    },
+                    "MErrDevSelfEx": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "requestURL": "",
+                    "statusCode": 200,
+                    "statusString": "",
+                    "subStatusCode": "",
+                    "errorCode": 1,
+                    "errorMsg": "",
+                    "MErrCode": "0xFFFFFFFF",
+                    "MErrDevSelfEx": "0xFFFFFFFF"
+                }
+            },
+            "XML_NetworkInterfaceList": {
+                "title": "Root Type for XML_NetworkInterfaceList",
+                "description": "NetworkInterfaceList message in XML format",
+                "type": "object",
+                "properties": {
+                    "NetworkInterfaceList": {
+                        "type": "object",
+                        "properties": {
+                            "NetworkInterface": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/XML_NetworkInterface"
+                                }
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "NetworkInterfaceList": {
+                        "NetworkInterface": [
+                        ],
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_RemoteControlDoor": {
+                "title": "Root Type for XML_RemoteControlDoor",
+                "description": "RemoteControlDoor message in XML format",
+                "type": "object",
+                "properties": {
+                    "RemoteControlDoor": {
+                        "type": "object",
+                        "properties": {
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            },
+                            "cmd": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "RemoteControlDoor": {
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema",
+                        "cmd": "",
+                        "password": ""
+                    }
+                }
+            },
+            "XML_ResponseStatus": {
+                "title": "Root Type for XML_ResponseStatus",
+                "description": "ResponseStatus message in XML format",
+                "type": "object",
+                "properties": {
+                    "ResponseStatus": {
+                        "type": "object",
+                        "properties": {
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            },
+                            "requestURL": {
+                                "type": "string"
+                            },
+                            "statusCode": {
+                                "type": "string"
+                            },
+                            "statusString": {
+                                "type": "string"
+                            },
+                            "subStatusCode": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "ResponseStatus": {
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema",
+                        "requestURL": "",
+                        "statusCode": "",
+                        "statusString": "",
+                        "subStatusCode": ""
+                    }
+                }
+            },
+            "XML_TwoWayAudioChannel": {
+                "title": "Root Type for XML_TwoWayAudioChannel",
+                "description": "TwoWayAudioChannel message in XML format",
+                "type": "object",
+                "properties": {
+                    "TwoWayAudioChannel": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "object"
+                            },
+                            "enabled": {
+                                "type": "object"
+                            },
+                            "audioCompressionType": {
+                                "type": "object"
+                            },
+                            "audioInboundCompressionType": {
+                                "type": "object"
+                            },
+                            "speakerVolume": {
+                                "type": "object"
+                            },
+                            "microphoneVolume": {
+                                "type": "object"
+                            },
+                            "noisereduce": {
+                                "type": "object"
+                            },
+                            "audioBitRate": {
+                                "type": "object"
+                            },
+                            "audioInputType": {
+                                "type": "object"
+                            },
+                            "associateVideoInputs": {
+                                "type": "object",
+                                "properties": {
+                                    "enabled": {
+                                        "type": "object"
+                                    },
+                                    "videoInputChannelList": {
+                                        "type": "object",
+                                        "properties": {
+                                            "videoInputChannelID": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "lineOutForbidden": {
+                                "type": "object"
+                            },
+                            "micInForbidden": {
+                                "type": "object"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "TwoWayAudioChannel": {
+                        "id": {
+
+                        },
+                        "enabled": {
+
+                        },
+                        "audioCompressionType": {
+
+                        },
+                        "audioInboundCompressionType": {
+
+                        },
+                        "speakerVolume": {
+
+                        },
+                        "microphoneVolume": {
+
+                        },
+                        "noisereduce": {
+
+                        },
+                        "audioBitRate": {
+
+                        },
+                        "audioInputType": {
+
+                        },
+                        "associateVideoInputs": {
+                            "enabled": {
+
+                            },
+                            "videoInputChannelList": {
+                                "videoInputChannelID": {
+
+                                }
+                            }
+                        },
+                        "lineOutForbidden": {
+
+                        },
+                        "micInForbidden": {
+
+                        },
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_TwoWayAudioChannelList": {
+                "title": "Root Type for XML_TwoWayAudioChannelList",
+                "description": "TwoWayAudioChannelList message in XML format",
+                "type": "object",
+                "properties": {
+                    "TwoWayAudioChannelList": {
+                        "type": "object",
+                        "properties": {
+                            "TwoWayAudioChannel": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/XML_TwoWayAudioChannel"
+                                }
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "TwoWayAudioChannelList": {
+                        "TwoWayAudioChannel": [
+                        ],
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_TwoWayAudioSession": {
+                "title": "Root Type for XML_TwoWayAudioSession",
+                "description": "TwoWayAudioSession message in XML format",
+                "type": "object",
+                "properties": {
+                    "TwoWayAudioSession": {
+                        "type": "object",
+                        "properties": {
+                            "sessionId": {
+                                "type": "string"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "TwoWayAudioSession": {
+                        "sessionId": "",
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_VideoInputChannel": {
+                "title": "Root Type for XML_VideoInputChannel",
+                "description": "VideoInputChannel message in XML format",
+                "type": "object",
+                "properties": {
+                    "VideoInputChannel": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "object"
+                            },
+                            "inputPort": {
+                                "type": "object"
+                            },
+                            "videoInputEnabled": {
+                                "type": "object"
+                            },
+                            "name": {
+                                "type": "object"
+                            },
+                            "videoFormat": {
+                                "type": "object"
+                            },
+                            "portType": {
+                                "type": "object"
+                            },
+                            "resDesc": {
+                                "type": "object"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "VideoInputChannel": {
+                        "id": {
+
+                        },
+                        "inputPort": {
+
+                        },
+                        "videoInputEnabled": {
+
+                        },
+                        "name": {
+
+                        },
+                        "videoFormat": {
+
+                        },
+                        "portType": {
+
+                        },
+                        "resDesc": {
+
+                        },
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_VideoInputChannelList": {
+                "title": "Root Type for XML_VideoInputChannelList",
+                "description": "VideoInputChannelList message in XML format",
+                "type": "object",
+                "properties": {
+                    "VideoInputChannelList": {
+                        "type": "object",
+                        "properties": {
+                            "VideoInputChannel": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/XML_VideoInputChannel"
+                                }
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "VideoInputChannelList": {
+                        "VideoInputChannel": [
+                            {
+
+                            }
+                        ],
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "JSON_Cap_CallStatus": {
+                "title": "Root Type for JSON_Cap_CallStatus",
+                "description": "JSON message about the capability of getting the call statusv",
+                "type": "object",
+                "properties": {
+                    "CallStatus": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "object",
+                                "properties": {
+                                    "@opt": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "CallStatus": {
+                        "status": {
+                            "@opt": [
+                                "idle",
+                                "ring",
+                                "onCall"
+                            ]
+                        }
+                    }
+                }
+            },
+            "XML_userCheck": {
+                "title": "Root Type for XML_userCheck",
+                "description": "userCheck message in XML format",
+                "type": "object",
+                "properties": {
+                    "userCheck": {
+                        "type": "object",
+                        "properties": {
+                            "statusValue": {
+                                "type": "string"
+                            },
+                            "statusString": {
+                                "type": "string"
+                            },
+                            "isDefaultPassword": {
+                                "type": "string"
+                            },
+                            "isRiskPassword": {
+                                "type": "string"
+                            },
+                            "isActivated": {
+                                "type": "string"
+                            },
+                            "lockStatus": {
+                                "type": "string"
+                            },
+                            "unlockTime": {
+                                "type": "string"
+                            },
+                            "retryLoginTime": {
+                                "type": "string"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "userCheck": {
+                        "statusValue": "",
+                        "statusString": "",
+                        "isDefaultPassword": "",
+                        "isRiskPassword": "",
+                        "isActivated": "",
+                        "lockStatus": "",
+                        "unlockTime": "",
+                        "retryLoginTime": "",
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_StreamingChannel": {
+                "title": "Root Type for XML_StreamingChannel",
+                "description": "StreamingChannel message in XML format",
+                "type": "object",
+                "properties": {
+                    "StreamingChannel": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "channelName": {
+                                "type": "string"
+                            },
+                            "enabled": {
+                                "type": "string"
+                            },
+                            "Transport": {
+                                "type": "object",
+                                "properties": {
+                                    "maxPacketSize": {
+                                        "type": "string"
+                                    },
+                                    "audioPacketLength": {
+                                        "type": "string"
+                                    },
+                                    "audioInboundPacketLength": {
+                                        "type": "string"
+                                    },
+                                    "audioInboundPortNo": {
+                                        "type": "string"
+                                    },
+                                    "videoSourcePortNo": {
+                                        "type": "string"
+                                    },
+                                    "audioSourcePortNo": {
+                                        "type": "string"
+                                    },
+                                    "ControlProtocolList": {
+                                        "type": "object",
+                                        "properties": {
+                                            "ControlProtocol": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "streamingTransport": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "Unicast": {
+                                        "type": "object",
+                                        "properties": {
+                                            "enabled": {
+                                                "type": "string"
+                                            },
+                                            "interfaceID": {
+                                                "type": "string"
+                                            },
+                                            "rtpTransportType": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "Multicast": {
+                                        "type": "object",
+                                        "properties": {
+                                            "enabled": {
+                                                "type": "string"
+                                            },
+                                            "userTriggerThreshold": {
+                                                "type": "string"
+                                            },
+                                            "destIPAddress": {
+                                                "type": "string"
+                                            },
+                                            "videoDestPortNo": {
+                                                "type": "string"
+                                            },
+                                            "audioDestPortNo": {
+                                                "type": "string"
+                                            },
+                                            "destIPv6Address": {
+                                                "type": "string"
+                                            },
+                                            "ttl": {
+                                                "type": "string"
+                                            },
+                                            "activeMulticastEnabled": {
+                                                "type": "object"
+                                            },
+                                            "packagingFormat": {
+                                                "type": "string"
+                                            },
+                                            "FecInfo": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "fecRatio": {
+                                                        "type": "object"
+                                                    },
+                                                    "fecDestPortNo": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "Security": {
+                                        "type": "object",
+                                        "properties": {
+                                            "enabled": {
+                                                "type": "string"
+                                            },
+                                            "certificateType": {
+                                                "type": "string"
+                                            },
+                                            "SecurityAlgorithm": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "algorithmType": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "SRTPMulticast": {
+                                        "type": "object",
+                                        "properties": {
+                                            "SRTPVideoDestPortNo": {
+                                                "type": "string"
+                                            },
+                                            "SRTPAudioDestPortNo": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "Video": {
+                                "type": "object",
+                                "properties": {
+                                    "enabled": {
+                                        "type": "string"
+                                    },
+                                    "videoInputChannelID": {
+                                        "type": "object"
+                                    },
+                                    "videoCodecType": {
+                                        "type": "object"
+                                    },
+                                    "videoResolutionWidth": {
+                                        "type": "object"
+                                    },
+                                    "videoResolutionHeight": {
+                                        "type": "object"
+                                    },
+                                    "videoQualityControlType": {
+                                        "type": "object"
+                                    },
+                                    "constantBitRate": {
+                                        "type": "object"
+                                    },
+                                    "vbrUpperCap": {
+                                        "type": "object"
+                                    },
+                                    "vbrLowerCap": {
+                                        "type": "object"
+                                    },
+                                    "maxFrameRate": {
+                                        "type": "object"
+                                    },
+                                    "keyFrameInterval": {
+                                        "type": "string"
+                                    },
+                                    "rotationDegree": {
+                                        "type": "string"
+                                    },
+                                    "mirrorEnabled": {
+                                        "type": "string"
+                                    },
+                                    "snapShotImageType": {
+                                        "type": "string"
+                                    },
+                                    "Mpeg4Profile": {
+                                        "type": "string"
+                                    },
+                                    "H264Profile": {
+                                        "type": "string"
+                                    },
+                                    "SVACProfile": {
+                                        "type": "string"
+                                    },
+                                    "GovLength": {
+                                        "type": "string"
+                                    },
+                                    "SVC": {
+                                        "type": "object",
+                                        "properties": {
+                                            "enabled": {
+                                                "type": "string"
+                                            },
+                                            "SVCMode": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "smoothing": {
+                                        "type": "string"
+                                    },
+                                    "SmartCodec": {
+                                        "type": "object",
+                                        "properties": {
+                                            "enabled": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "vbrAverageCap": {
+                                        "type": "string"
+                                    },
+                                    "IntelligentInfoDisplayMethod": {
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "Audio": {
+                                "type": "object",
+                                "properties": {
+                                    "enabled": {
+                                        "type": "string"
+                                    },
+                                    "audioInputChannelID": {
+                                        "type": "string"
+                                    },
+                                    "audioCompressionType": {
+                                        "type": "object"
+                                    },
+                                    "audioInboundCompressionType": {
+                                        "type": "object"
+                                    },
+                                    "audioBitRate": {
+                                        "type": "string"
+                                    },
+                                    "audioSamplingRate": {
+                                        "type": "string"
+                                    },
+                                    "audioResolution": {
+                                        "type": "string"
+                                    },
+                                    "VoiceChanger": {
+                                        "type": "object",
+                                        "properties": {
+                                            "enabled": {
+                                                "type": "string"
+                                            },
+                                            "level": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "enableCABAC": {
+                                "type": "string"
+                            },
+                            "subStreamRecStatus": {
+                                "type": "string"
+                            },
+                            "customStreamEnable": {
+                                "type": "object",
+                                "properties": {
+                                    "StreamingChannel": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "channelName": {
+                                                "type": "string"
+                                            },
+                                            "enabled": {
+                                                "type": "string"
+                                            },
+                                            "Transport": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "maxPacketSize": {
+                                                        "type": "string"
+                                                    },
+                                                    "audioPacketLength": {
+                                                        "type": "string"
+                                                    },
+                                                    "audioInboundPacketLength": {
+                                                        "type": "string"
+                                                    },
+                                                    "audioInboundPortNo": {
+                                                        "type": "string"
+                                                    },
+                                                    "videoSourcePortNo": {
+                                                        "type": "string"
+                                                    },
+                                                    "audioSourcePortNo": {
+                                                        "type": "string"
+                                                    },
+                                                    "ControlProtocolList": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "ControlProtocol": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "streamingTransport": {
+                                                                        "type": "object"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "Unicast": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "enabled": {
+                                                                "type": "string"
+                                                            },
+                                                            "interfaceID": {
+                                                                "type": "string"
+                                                            },
+                                                            "rtpTransportType": {
+                                                                "type": "object"
+                                                            }
+                                                        }
+                                                    },
+                                                    "Multicast": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "enabled": {
+                                                                "type": "string"
+                                                            },
+                                                            "userTriggerThreshold": {
+                                                                "type": "string"
+                                                            },
+                                                            "destIPAddress": {
+                                                                "type": "string"
+                                                            },
+                                                            "videoDestPortNo": {
+                                                                "type": "string"
+                                                            },
+                                                            "audioDestPortNo": {
+                                                                "type": "string"
+                                                            },
+                                                            "destIPv6Address": {
+                                                                "type": "string"
+                                                            },
+                                                            "ttl": {
+                                                                "type": "string"
+                                                            },
+                                                            "activeMulticastEnabled": {
+                                                                "type": "object"
+                                                            },
+                                                            "packagingFormat": {
+                                                                "type": "string"
+                                                            },
+                                                            "FecInfo": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "fecRatio": {
+                                                                        "type": "object"
+                                                                    },
+                                                                    "fecDestPortNo": {
+                                                                        "type": "object"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "Security": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "enabled": {
+                                                                "type": "string"
+                                                            },
+                                                            "certificateType": {
+                                                                "type": "string"
+                                                            },
+                                                            "SecurityAlgorithm": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "algorithmType": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "SRTPMulticast": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "SRTPVideoDestPortNo": {
+                                                                "type": "string"
+                                                            },
+                                                            "SRTPAudioDestPortNo": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "Video": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "string"
+                                                    },
+                                                    "videoInputChannelID": {
+                                                        "type": "object"
+                                                    },
+                                                    "videoCodecType": {
+                                                        "type": "object"
+                                                    },
+                                                    "videoResolutionWidth": {
+                                                        "type": "object"
+                                                    },
+                                                    "videoResolutionHeight": {
+                                                        "type": "object"
+                                                    },
+                                                    "videoQualityControlType": {
+                                                        "type": "object"
+                                                    },
+                                                    "constantBitRate": {
+                                                        "type": "object"
+                                                    },
+                                                    "vbrUpperCap": {
+                                                        "type": "object"
+                                                    },
+                                                    "vbrLowerCap": {
+                                                        "type": "object"
+                                                    },
+                                                    "maxFrameRate": {
+                                                        "type": "object"
+                                                    },
+                                                    "keyFrameInterval": {
+                                                        "type": "string"
+                                                    },
+                                                    "rotationDegree": {
+                                                        "type": "string"
+                                                    },
+                                                    "mirrorEnabled": {
+                                                        "type": "string"
+                                                    },
+                                                    "snapShotImageType": {
+                                                        "type": "string"
+                                                    },
+                                                    "Mpeg4Profile": {
+                                                        "type": "string"
+                                                    },
+                                                    "H264Profile": {
+                                                        "type": "string"
+                                                    },
+                                                    "SVACProfile": {
+                                                        "type": "string"
+                                                    },
+                                                    "GovLength": {
+                                                        "type": "string"
+                                                    },
+                                                    "SVC": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "enabled": {
+                                                                "type": "string"
+                                                            },
+                                                            "SVCMode": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "smoothing": {
+                                                        "type": "string"
+                                                    },
+                                                    "SmartCodec": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "enabled": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "vbrAverageCap": {
+                                                        "type": "string"
+                                                    },
+                                                    "IntelligentInfoDisplayMethod": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "Audio": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "string"
+                                                    },
+                                                    "audioInputChannelID": {
+                                                        "type": "string"
+                                                    },
+                                                    "audioCompressionType": {
+                                                        "type": "object"
+                                                    },
+                                                    "audioInboundCompressionType": {
+                                                        "type": "object"
+                                                    },
+                                                    "audioBitRate": {
+                                                        "type": "string"
+                                                    },
+                                                    "audioSamplingRate": {
+                                                        "type": "string"
+                                                    },
+                                                    "audioResolution": {
+                                                        "type": "string"
+                                                    },
+                                                    "VoiceChanger": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "enabled": {
+                                                                "type": "string"
+                                                            },
+                                                            "level": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "enableCABAC": {
+                                                "type": "string"
+                                            },
+                                            "subStreamRecStatus": {
+                                                "type": "string"
+                                            },
+                                            "customStreamEnable": {
+                                                "type": "string"
+                                            },
+                                            "@version": {
+                                                "type": "string"
+                                            },
+                                            "@xmlns": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "StreamingChannel": {
+                        "id": "",
+                        "channelName": "",
+                        "enabled": "",
+                        "Transport": {
+                            "maxPacketSize": "",
+                            "audioPacketLength": "",
+                            "audioInboundPacketLength": "",
+                            "audioInboundPortNo": "",
+                            "videoSourcePortNo": "",
+                            "audioSourcePortNo": "",
+                            "ControlProtocolList": {
+                                "ControlProtocol": {
+                                    "streamingTransport": {
+
+                                    }
+                                }
+                            },
+                            "Unicast": {
+                                "enabled": "",
+                                "interfaceID": "",
+                                "rtpTransportType": {
+
+                                }
+                            },
+                            "Multicast": {
+                                "enabled": "",
+                                "userTriggerThreshold": "",
+                                "destIPAddress": "",
+                                "videoDestPortNo": "",
+                                "audioDestPortNo": "",
+                                "destIPv6Address": "",
+                                "ttl": "",
+                                "activeMulticastEnabled": {
+
+                                },
+                                "packagingFormat": "",
+                                "FecInfo": {
+                                    "fecRatio": {
+
+                                    },
+                                    "fecDestPortNo": {
+
+                                    }
+                                }
+                            },
+                            "Security": {
+                                "enabled": "",
+                                "certificateType": "",
+                                "SecurityAlgorithm": {
+                                    "algorithmType": ""
+                                }
+                            },
+                            "SRTPMulticast": {
+                                "SRTPVideoDestPortNo": "",
+                                "SRTPAudioDestPortNo": ""
+                            }
+                        },
+                        "Video": {
+                            "enabled": "",
+                            "videoInputChannelID": {
+
+                            },
+                            "videoCodecType": {
+
+                            },
+                            "videoResolutionWidth": {
+
+                            },
+                            "videoResolutionHeight": {
+
+                            },
+                            "videoQualityControlType": {
+
+                            },
+                            "constantBitRate": {
+
+                            },
+                            "vbrUpperCap": {
+
+                            },
+                            "vbrLowerCap": {
+
+                            },
+                            "maxFrameRate": {
+
+                            },
+                            "keyFrameInterval": "",
+                            "rotationDegree": "",
+                            "mirrorEnabled": "",
+                            "snapShotImageType": "",
+                            "Mpeg4Profile": "",
+                            "H264Profile": "",
+                            "SVACProfile": "",
+                            "GovLength": "",
+                            "SVC": {
+                                "enabled": "",
+                                "SVCMode": ""
+                            },
+                            "smoothing": "",
+                            "SmartCodec": {
+                                "enabled": ""
+                            },
+                            "vbrAverageCap": "",
+                            "IntelligentInfoDisplayMethod": {
+
+                            }
+                        },
+                        "Audio": {
+                            "enabled": "",
+                            "audioInputChannelID": "",
+                            "audioCompressionType": {
+
+                            },
+                            "audioInboundCompressionType": {
+
+                            },
+                            "audioBitRate": "",
+                            "audioSamplingRate": "",
+                            "audioResolution": "",
+                            "VoiceChanger": {
+                                "enabled": "",
+                                "level": ""
+                            }
+                        },
+                        "enableCABAC": "",
+                        "subStreamRecStatus": "",
+                        "customStreamEnable": {
+                            "StreamingChannel": {
+                                "id": "",
+                                "channelName": "",
+                                "enabled": "",
+                                "Transport": {
+                                    "maxPacketSize": "",
+                                    "audioPacketLength": "",
+                                    "audioInboundPacketLength": "",
+                                    "audioInboundPortNo": "",
+                                    "videoSourcePortNo": "",
+                                    "audioSourcePortNo": "",
+                                    "ControlProtocolList": {
+                                        "ControlProtocol": {
+                                            "streamingTransport": {
+
+                                            }
+                                        }
+                                    },
+                                    "Unicast": {
+                                        "enabled": "",
+                                        "interfaceID": "",
+                                        "rtpTransportType": {
+
+                                        }
+                                    },
+                                    "Multicast": {
+                                        "enabled": "",
+                                        "userTriggerThreshold": "",
+                                        "destIPAddress": "",
+                                        "videoDestPortNo": "",
+                                        "audioDestPortNo": "",
+                                        "destIPv6Address": "",
+                                        "ttl": "",
+                                        "activeMulticastEnabled": {
+
+                                        },
+                                        "packagingFormat": "",
+                                        "FecInfo": {
+                                            "fecRatio": {
+
+                                            },
+                                            "fecDestPortNo": {
+
+                                            }
+                                        }
+                                    },
+                                    "Security": {
+                                        "enabled": "",
+                                        "certificateType": "",
+                                        "SecurityAlgorithm": {
+                                            "algorithmType": ""
+                                        }
+                                    },
+                                    "SRTPMulticast": {
+                                        "SRTPVideoDestPortNo": "",
+                                        "SRTPAudioDestPortNo": ""
+                                    }
+                                },
+                                "Video": {
+                                    "enabled": "",
+                                    "videoInputChannelID": {
+
+                                    },
+                                    "videoCodecType": {
+
+                                    },
+                                    "videoResolutionWidth": {
+
+                                    },
+                                    "videoResolutionHeight": {
+
+                                    },
+                                    "videoQualityControlType": {
+
+                                    },
+                                    "constantBitRate": {
+
+                                    },
+                                    "vbrUpperCap": {
+
+                                    },
+                                    "vbrLowerCap": {
+
+                                    },
+                                    "maxFrameRate": {
+
+                                    },
+                                    "keyFrameInterval": "",
+                                    "rotationDegree": "",
+                                    "mirrorEnabled": "",
+                                    "snapShotImageType": "",
+                                    "Mpeg4Profile": "",
+                                    "H264Profile": "",
+                                    "SVACProfile": "",
+                                    "GovLength": "",
+                                    "SVC": {
+                                        "enabled": "",
+                                        "SVCMode": ""
+                                    },
+                                    "smoothing": "",
+                                    "SmartCodec": {
+                                        "enabled": ""
+                                    },
+                                    "vbrAverageCap": "",
+                                    "IntelligentInfoDisplayMethod": {
+
+                                    }
+                                },
+                                "Audio": {
+                                    "enabled": "",
+                                    "audioInputChannelID": "",
+                                    "audioCompressionType": {
+
+                                    },
+                                    "audioInboundCompressionType": {
+
+                                    },
+                                    "audioBitRate": "",
+                                    "audioSamplingRate": "",
+                                    "audioResolution": "",
+                                    "VoiceChanger": {
+                                        "enabled": "",
+                                        "level": ""
+                                    }
+                                },
+                                "enableCABAC": "",
+                                "subStreamRecStatus": "",
+                                "customStreamEnable": "",
+                                "@version": "2.0",
+                                "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                            }
+                        },
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_StreamingChannelList": {
+                "title": "Root Type for XML_StreamingChannelList",
+                "description": "StreamingChannelList message in XML format",
+                "type": "object",
+                "properties": {
+                    "StreamingChannelList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/XML_StreamingChannel"
+                        },
+                        "properties": {
+                            "StreamingChannel": {
+                                "type": "string"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@StreamingChannelList message in XML formatxmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "StreamingChannelList": {
+                        "StreamingChannel": "",
+                        "@version": "2.0",
+                        "@StreamingChannelList message in XML formatxmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_Cap_RemoteControlDoor": {
+                "title": "Root Type for XML_Cap_RemoteControlDoor",
+                "description": "RemoteControlDoor capability message in XML format",
+                "type": "object",
+                "properties": {
+                    "RemoteControlDoor": {
+                        "type": "object",
+                        "properties": {
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            },
+                            "doorNo": {
+                                "type": "object",
+                                "properties": {
+                                    "@min": {
+                                        "type": "string"
+                                    },
+                                    "@max": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "cmd": {
+                                "type": "object",
+                                "properties": {
+                                    "@opt": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "password": {
+                                "type": "object",
+                                "properties": {
+                                    "@min": {
+                                        "type": "string"
+                                    },
+                                    "@max": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "RemoteControlDoor": {
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema",
+                        "doorNo": {
+                            "@min": "",
+                            "@max": ""
+                        },
+                        "cmd": {
+                            "@opt": "open,close,alwaysOpen,alwaysClose,visitorCallLadder,householdCallLadder"
+                        },
+                        "password": {
+                            "@min": "",
+                            "@max": ""
+                        }
+                    }
+                }
+            },
+            "XML_Cap_AccessControl": {
+                "title": "Root Type for XML_Cap_AccessControl",
+                "description": "AccessControl capability message in XML format",
+                "type": "object",
+                "properties": {
+                    "AccessControl": {
+                        "type": "object",
+                        "properties": {
+                            "isSupportWiegandCfg": {
+                                "type": "object"
+                            },
+                            "isSupportModuleStatus": {
+                                "type": "object"
+                            },
+                            "isSupportSNAPConfig": {
+                                "type": "object"
+                            },
+                            "LocalController": {
+                                "type": "object",
+                                "properties": {
+                                    "isSupportLocalControllerManage": {
+                                        "type": "object"
+                                    },
+                                    "isSupportLocalControllerControl": {
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "isSupportUSBManage": {
+                                "type": "object"
+                            },
+                            "isSupportIdentityTerminal": {
+                                "type": "object"
+                            },
+                            "isSupportDepartmentParam": {
+                                "type": "object"
+                            },
+                            "isSupportSchedulePlan": {
+                                "type": "object"
+                            },
+                            "isSupportAttendanceRule": {
+                                "type": "object"
+                            },
+                            "isSupportOrdinaryClass": {
+                                "type": "object"
+                            },
+                            "isSupportWorkingClass": {
+                                "type": "object"
+                            },
+                            "isSupportAttendanceHolidayGroup": {
+                                "type": "object"
+                            },
+                            "isSupportAttendanceHolidayPlan": {
+                                "type": "object"
+                            },
+                            "isSupportLadderControlRelay": {
+                                "type": "object"
+                            },
+                            "isSupportWiegandRuleCfg": {
+                                "type": "object"
+                            },
+                            "isSupportM1CardEncryptCfg": {
+                                "type": "object"
+                            },
+                            "isSupportDeployInfo": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "isSupportSubmarineBack": {
+                                "type": "object"
+                            },
+                            "isSupportSubmarineBackHostInfo": {
+                                "type": "object"
+                            },
+                            "isSupportStartReaderInfo": {
+                                "type": "object"
+                            },
+                            "isSupportSubmarineBackReader": {
+                                "type": "object"
+                            },
+                            "isSupportServerDevice": {
+                                "type": "object"
+                            },
+                            "isSupportReaderAcrossHost": {
+                                "type": "object"
+                            },
+                            "isSupportClearCardRecord": {
+                                "type": "object"
+                            },
+                            "isSupportSubmarineBackMode": {
+                                "type": "object"
+                            },
+                            "isSupportClearSubmarineBack": {
+                                "type": "object"
+                            },
+                            "isSupportRemoteControlDoor": {
+                                "type": "object"
+                            },
+                            "isSupportUserInfo": {
+                                "type": "string"
+                            },
+                            "EmployeeNoInfo": {
+                                "type": "object",
+                                "properties": {
+                                    "employeeNo": {
+                                        "type": "object",
+                                        "properties": {
+                                            "@min": {
+                                                "type": "string"
+                                            },
+                                            "@max": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "characterType": {
+                                        "type": "object",
+                                        "properties": {
+                                            "@opt": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "isSupportCompress": {
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "isSupportCardInfo": {
+                                "type": "string"
+                            },
+                            "isSupportUserInfoDetailDelete": {
+                                "type": "string"
+                            },
+                            "isSupportAuthCodeInfo": {
+                                "type": "object"
+                            },
+                            "isSupportFingerPrintCfg": {
+                                "type": "object"
+                            },
+                            "isSupportFingerPrintDelete": {
+                                "type": "object"
+                            },
+                            "isSupportCaptureFingerPrint": {
+                                "type": "object"
+                            },
+                            "isSupportDoorStatusWeekPlanCfg": {
+                                "type": "object"
+                            },
+                            "isSupportVerifyWeekPlanCfg": {
+                                "type": "object"
+                            },
+                            "isSupportCardRightWeekPlanCfg": {
+                                "type": "object"
+                            },
+                            "isSupportDoorStatusHolidayPlanCfg": {
+                                "type": "object"
+                            },
+                            "isSupportVerifyHolidayPlanCfg": {
+                                "type": "object"
+                            },
+                            "isSupportCardRightHolidayPlanCfg": {
+                                "type": "object"
+                            },
+                            "isSupportDoorStatusHolidayGroupCfg": {
+                                "type": "object"
+                            },
+                            "isSupportVerifyHolidayGroupCfg": {
+                                "type": "object"
+                            },
+                            "isSupportUserRightHolidayGroupCfg": {
+                                "type": "object"
+                            },
+                            "isSupportDoorStatusPlanTemplate": {
+                                "type": "object"
+                            },
+                            "isSupportVerifyPlanTemplate": {
+                                "type": "object"
+                            },
+                            "isSupportUserRightPlanTemplate": {
+                                "type": "object"
+                            },
+                            "isSupportDoorStatusPlan": {
+                                "type": "object"
+                            },
+                            "isSupportCardReaderPlan": {
+                                "type": "object"
+                            },
+                            "isSupportClearPlansCfg": {
+                                "type": "object"
+                            },
+                            "isSupportRemoteControlBuzzer": {
+                                "type": "object"
+                            },
+                            "isSupportEventCardNoList": {
+                                "type": "object"
+                            },
+                            "isSupportEventCardLinkageCfg": {
+                                "type": "object"
+                            },
+                            "isSupportClearEventCardLinkageCfg": {
+                                "type": "object"
+                            },
+                            "isSupportAcsEvent": {
+                                "type": "object"
+                            },
+                            "isSupportAcsEventTotalNum": {
+                                "type": "object"
+                            },
+                            "isSupportEventOptimizationCfg": {
+                                "type": "object"
+                            },
+                            "isSupportAcsWorkStatus": {
+                                "type": "object"
+                            },
+                            "isSupportDoorCfg": {
+                                "type": "object"
+                            },
+                            "isSupportCardReaderCfg": {
+                                "type": "object"
+                            },
+                            "isSupportAcsCfg": {
+                                "type": "object"
+                            },
+                            "isSupportGroupCfg": {
+                                "type": "object"
+                            },
+                            "isSupportClearGroupCfg": {
+                                "type": "object"
+                            },
+                            "isSupportMultiCardCfg": {
+                                "type": "object"
+                            },
+                            "isSupportMultiDoorInterLockCfg": {
+                                "type": "object"
+                            },
+                            "isSupportAntiSneakCfg": {
+                                "type": "object"
+                            },
+                            "isSupportCardReaderAntiSneakCfg": {
+                                "type": "object"
+                            },
+                            "isSupportClearAntiSneakCfg": {
+                                "type": "object"
+                            },
+                            "isSupportClearAntiSneak": {
+                                "type": "object"
+                            },
+                            "isSupportSmsRelativeParam": {
+                                "type": "object"
+                            },
+                            "isSupportPhoneDoorRightCfg": {
+                                "type": "object"
+                            },
+                            "isSupportOSDPStatus": {
+                                "type": "object"
+                            },
+                            "isSupportOSDPModify": {
+                                "type": "object"
+                            },
+                            "isSupportLogModeCfg": {
+                                "type": "object"
+                            },
+                            "FactoryReset": {
+                                "type": "object",
+                                "properties": {
+                                    "isSupportFactoryReset": {
+                                        "type": "string"
+                                    },
+                                    "mode": {
+                                        "type": "object",
+                                        "properties": {
+                                            "@opt": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "isSupportNFCCfg": {
+                                "type": "string"
+                            },
+                            "isSupportRFCardCfg": {
+                                "type": "string"
+                            },
+                            "isSupportCaptureFace": {
+                                "type": "object"
+                            },
+                            "isSupportCaptureInfraredFace": {
+                                "type": "object"
+                            },
+                            "isSupportFaceRecognizeMode": {
+                                "type": "object"
+                            },
+                            "isSupportRemoteControlPWChcek": {
+                                "type": "object"
+                            },
+                            "isSupportRemoteControlPWCfg": {
+                                "type": "object"
+                            },
+                            "isSupportAttendanceStatusModeCfg": {
+                                "type": "object"
+                            },
+                            "isSupportAttendanceStatusRuleCfg": {
+                                "type": "object"
+                            },
+                            "isSupportCaptureCardInfo": {
+                                "type": "object"
+                            },
+                            "isSupportCaptureIDInfo": {
+                                "type": "object"
+                            },
+                            "isSupportCaptureRule": {
+                                "type": "object"
+                            },
+                            "isSupportCapturePresetParam": {
+                                "type": "object"
+                            },
+                            "isSupportOfflineCapture": {
+                                "type": "object"
+                            },
+                            "isSupportCardOperations": {
+                                "type": "object"
+                            },
+                            "isSupportRightControllerAudio": {
+                                "type": "object"
+                            },
+                            "isSupportChannelControllerCfg": {
+                                "type": "object"
+                            },
+                            "isSupportGateDialAndInfo": {
+                                "type": "object"
+                            },
+                            "isSupportGateStatus": {
+                                "type": "object"
+                            },
+                            "isSupportGateIRStatus": {
+                                "type": "object"
+                            },
+                            "isSupportGateRelatedPartsStatus": {
+                                "type": "object"
+                            },
+                            "isSupportChannelControllerAlarmLinkage": {
+                                "type": "object"
+                            },
+                            "isSupportChannelControllerAlarmOut": {
+                                "type": "object"
+                            },
+                            "isSupportChannelControllerAlarmOutControl": {
+                                "type": "object"
+                            },
+                            "isSupportChannelControllerTypeCfg": {
+                                "type": "object"
+                            },
+                            "isSupportTTSText": {
+                                "type": "string"
+                            },
+                            "isSupportIDBlackListCfg": {
+                                "type": "string"
+                            },
+                            "isSupportUserDataImport": {
+                                "type": "string"
+                            },
+                            "isSupportUserDataExport": {
+                                "type": "string"
+                            },
+                            "isSupportMaintenanceDataExport": {
+                                "type": "string"
+                            },
+                            "isSupportLockTypeCfg": {
+                                "type": "string"
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "AccessControl": {
+                        "isSupportWiegandCfg": {
+
+                        },
+                        "isSupportModuleStatus": {
+
+                        },
+                        "isSupportSNAPConfig": {
+
+                        },
+                        "LocalController": {
+                            "isSupportLocalControllerManage": {
+
+                            },
+                            "isSupportLocalControllerControl": {
+
+                            }
+                        },
+                        "isSupportUSBManage": {
+
+                        },
+                        "isSupportIdentityTerminal": {
+
+                        },
+                        "isSupportDepartmentParam": {
+
+                        },
+                        "isSupportSchedulePlan": {
+
+                        },
+                        "isSupportAttendanceRule": {
+
+                        },
+                        "isSupportOrdinaryClass": {
+
+                        },
+                        "isSupportWorkingClass": {
+
+                        },
+                        "isSupportAttendanceHolidayGroup": {
+
+                        },
+                        "isSupportAttendanceHolidayPlan": {
+
+                        },
+                        "isSupportLadderControlRelay": {
+
+                        },
+                        "isSupportWiegandRuleCfg": {
+
+                        },
+                        "isSupportM1CardEncryptCfg": {
+
+                        },
+                        "isSupportDeployInfo": [
+                            {
+
+                            },
+                            {
+
+                            }
+                        ],
+                        "isSupportSubmarineBack": {
+
+                        },
+                        "isSupportSubmarineBackHostInfo": {
+
+                        },
+                        "isSupportStartReaderInfo": {
+
+                        },
+                        "isSupportSubmarineBackReader": {
+
+                        },
+                        "isSupportServerDevice": {
+
+                        },
+                        "isSupportReaderAcrossHost": {
+
+                        },
+                        "isSupportClearCardRecord": {
+
+                        },
+                        "isSupportSubmarineBackMode": {
+
+                        },
+                        "isSupportClearSubmarineBack": {
+
+                        },
+                        "isSupportRemoteControlDoor": {
+
+                        },
+                        "isSupportUserInfo": "",
+                        "EmployeeNoInfo": {
+                            "employeeNo": {
+                                "@min": "",
+                                "@max": ""
+                            },
+                            "characterType": {
+                                "@opt": "any,number"
+                            },
+                            "isSupportCompress": {
+
+                            }
+                        },
+                        "isSupportCardInfo": "",
+                        "isSupportUserInfoDetailDelete": "",
+                        "isSupportAuthCodeInfo": {
+
+                        },
+                        "isSupportFingerPrintCfg": {
+
+                        },
+                        "isSupportFingerPrintDelete": {
+
+                        },
+                        "isSupportCaptureFingerPrint": {
+
+                        },
+                        "isSupportDoorStatusWeekPlanCfg": {
+
+                        },
+                        "isSupportVerifyWeekPlanCfg": {
+
+                        },
+                        "isSupportCardRightWeekPlanCfg": {
+
+                        },
+                        "isSupportDoorStatusHolidayPlanCfg": {
+
+                        },
+                        "isSupportVerifyHolidayPlanCfg": {
+
+                        },
+                        "isSupportCardRightHolidayPlanCfg": {
+
+                        },
+                        "isSupportDoorStatusHolidayGroupCfg": {
+
+                        },
+                        "isSupportVerifyHolidayGroupCfg": {
+
+                        },
+                        "isSupportUserRightHolidayGroupCfg": {
+
+                        },
+                        "isSupportDoorStatusPlanTemplate": {
+
+                        },
+                        "isSupportVerifyPlanTemplate": {
+
+                        },
+                        "isSupportUserRightPlanTemplate": {
+
+                        },
+                        "isSupportDoorStatusPlan": {
+
+                        },
+                        "isSupportCardReaderPlan": {
+
+                        },
+                        "isSupportClearPlansCfg": {
+
+                        },
+                        "isSupportRemoteControlBuzzer": {
+
+                        },
+                        "isSupportEventCardNoList": {
+
+                        },
+                        "isSupportEventCardLinkageCfg": {
+
+                        },
+                        "isSupportClearEventCardLinkageCfg": {
+
+                        },
+                        "isSupportAcsEvent": {
+
+                        },
+                        "isSupportAcsEventTotalNum": {
+
+                        },
+                        "isSupportEventOptimizationCfg": {
+
+                        },
+                        "isSupportAcsWorkStatus": {
+
+                        },
+                        "isSupportDoorCfg": {
+
+                        },
+                        "isSupportCardReaderCfg": {
+
+                        },
+                        "isSupportAcsCfg": {
+
+                        },
+                        "isSupportGroupCfg": {
+
+                        },
+                        "isSupportClearGroupCfg": {
+
+                        },
+                        "isSupportMultiCardCfg": {
+
+                        },
+                        "isSupportMultiDoorInterLockCfg": {
+
+                        },
+                        "isSupportAntiSneakCfg": {
+
+                        },
+                        "isSupportCardReaderAntiSneakCfg": {
+
+                        },
+                        "isSupportClearAntiSneakCfg": {
+
+                        },
+                        "isSupportClearAntiSneak": {
+
+                        },
+                        "isSupportSmsRelativeParam": {
+
+                        },
+                        "isSupportPhoneDoorRightCfg": {
+
+                        },
+                        "isSupportOSDPStatus": {
+
+                        },
+                        "isSupportOSDPModify": {
+
+                        },
+                        "isSupportLogModeCfg": {
+
+                        },
+                        "FactoryReset": {
+                            "isSupportFactoryReset": "",
+                            "mode": {
+                                "@opt": "full,basic,part"
+                            }
+                        },
+                        "isSupportNFCCfg": "",
+                        "isSupportRFCardCfg": "",
+                        "isSupportCaptureFace": {
+
+                        },
+                        "isSupportCaptureInfraredFace": {
+
+                        },
+                        "isSupportFaceRecognizeMode": {
+
+                        },
+                        "isSupportRemoteControlPWChcek": {
+
+                        },
+                        "isSupportRemoteControlPWCfg": {
+
+                        },
+                        "isSupportAttendanceStatusModeCfg": {
+
+                        },
+                        "isSupportAttendanceStatusRuleCfg": {
+
+                        },
+                        "isSupportCaptureCardInfo": {
+
+                        },
+                        "isSupportCaptureIDInfo": {
+
+                        },
+                        "isSupportCaptureRule": {
+
+                        },
+                        "isSupportCapturePresetParam": {
+
+                        },
+                        "isSupportOfflineCapture": {
+
+                        },
+                        "isSupportCardOperations": {
+
+                        },
+                        "isSupportRightControllerAudio": {
+
+                        },
+                        "isSupportChannelControllerCfg": {
+
+                        },
+                        "isSupportGateDialAndInfo": {
+
+                        },
+                        "isSupportGateStatus": {
+
+                        },
+                        "isSupportGateIRStatus": {
+
+                        },
+                        "isSupportGateRelatedPartsStatus": {
+
+                        },
+                        "isSupportChannelControllerAlarmLinkage": {
+
+                        },
+                        "isSupportChannelControllerAlarmOut": {
+
+                        },
+                        "isSupportChannelControllerAlarmOutControl": {
+
+                        },
+                        "isSupportChannelControllerTypeCfg": {
+
+                        },
+                        "isSupportTTSText": "",
+                        "isSupportIDBlackListCfg": "",
+                        "isSupportUserDataImport": "",
+                        "isSupportUserDataExport": "",
+                        "isSupportMaintenanceDataExport": "",
+                        "isSupportLockTypeCfg": "",
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_DeviceInfo": {
+                "title": "Root Type for XML_DeviceInfo",
+                "description": "XML message about device information",
+                "type": "object",
+                "properties": {
+                    "DeviceInfo": {
+                        "type": "object",
+                        "properties": {
+                            "deviceName": {
+                                "type": "string"
+                            },
+                            "deviceID": {
+                                "type": "string"
+                            },
+                            "deviceDescription": {
+                                "type": "object"
+                            },
+                            "deviceLocation": {
+                                "type": "string"
+                            },
+                            "deviceStatus": {
+                                "type": "string"
+                            },
+                            "DetailAbnormalStatus": {
+                                "type": "object",
+                                "properties": {
+                                    "hardDiskFull": {
+                                        "type": "object"
+                                    },
+                                    "hardDiskError": {
+                                        "type": "object"
+                                    },
+                                    "ethernetBroken": {
+                                        "type": "object"
+                                    },
+                                    "ipaddrConflict": {
+                                        "type": "object"
+                                    },
+                                    "illegalAccess": {
+                                        "type": "object"
+                                    },
+                                    "recordError": {
+                                        "type": "object"
+                                    },
+                                    "raidLogicDiskError": {
+                                        "type": "object"
+                                    },
+                                    "spareWorkDeviceError": {
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "systemContact": {
+                                "type": "string"
+                            },
+                            "model": {
+                                "type": "string"
+                            },
+                            "serialNumber": {
+                                "type": "string"
+                            },
+                            "macAddress": {
+                                "type": "string"
+                            },
+                            "firmwareVersion": {
+                                "type": "string"
+                            },
+                            "firmwareReleasedDate": {
+                                "type": "string"
+                            },
+                            "bootVersion": {
+                                "type": "string"
+                            },
+                            "bootReleasedDate": {
+                                "type": "string"
+                            },
+                            "hardwareVersion": {
+                                "type": "string"
+                            },
+                            "encoderVersion": {
+                                "type": "string"
+                            },
+                            "encoderReleasedDate": {
+                                "type": "string"
+                            },
+                            "decoderVersion": {
+                                "type": "string"
+                            },
+                            "decoderReleasedDate": {
+                                "type": "string"
+                            },
+                            "softwareVersion": {
+                                "type": "string"
+                            },
+                            "capacity": {
+                                "type": "string"
+                            },
+                            "usedCapacity": {
+                                "type": "string"
+                            },
+                            "deviceType": {
+                                "type": "object"
+                            },
+                            "telecontrolID": {
+                                "type": "string"
+                            },
+                            "supportBeep": {
+                                "type": "string"
+                            },
+                            "supportVideoLoss": {
+                                "type": "string"
+                            },
+                            "firmwareVersionInfo": {
+                                "type": "string"
+                            },
+                            "actualFloorNum": {
+                                "type": "object"
+                            },
+                            "subChannelEnabled": {
+                                "type": "string"
+                            },
+                            "thrChannelEnabled": {
+                                "type": "string"
+                            },
+                            "radarVersion": {
+                                "type": "string"
+                            },
+                            "cameraModuleVersion": {
+                                "type": "string"
+                            },
+                            "mainversion": {
+                                "type": "string"
+                            },
+                            "subversion": {
+                                "type": "string"
+                            },
+                            "upgradeversion": {
+                                "type": "string"
+                            },
+                            "customizeversion": {
+                                "type": "string"
+                            },
+                            "companyName": {
+                                "type": "string"
+                            },
+                            "copyright": {
+                                "type": "string"
+                            },
+                            "systemName": {
+                                "type": "string"
+                            },
+                            "systemStatus": {
+                                "type": "string"
+                            },
+                            "isLeaderDevice": {
+                                "type": "string"
+                            },
+                            "clusterVersion": {
+                                "type": "string"
+                            },
+                            "customizedInfo": {
+                                "type": "string"
+                            },
+                            "localZoneNum": {
+                                "type": "string"
+                            },
+                            "alarmOutNum": {
+                                "type": "string"
+                            },
+                            "distanceResolution": {
+                                "type": "string"
+                            },
+                            "angleResolution": {
+                                "type": "string"
+                            },
+                            "speedResolution": {
+                                "type": "string"
+                            },
+                            "detectDistance": {
+                                "type": "string"
+                            },
+                            "languageType": {
+                                "type": "string"
+                            },
+                            "relayNum": {
+                                "type": "string"
+                            },
+                            "electroLockNum": {
+                                "type": "string"
+                            },
+                            "RS485Num": {
+                                "type": "string"
+                            },
+                            "powerOnMode": {
+                                "type": "string"
+                            },
+                            "DockStation": {
+                                "type": "object",
+                                "properties": {
+                                    "Platform": {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "ip": {
+                                                "type": "string"
+                                            },
+                                            "port": {
+                                                "type": "string"
+                                            },
+                                            "userName": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "centralStorageBackupEnabled": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "webVersion": {
+                                "type": "string"
+                            },
+                            "deviceRFProgramVersion": {
+                                "type": "string"
+                            },
+                            "securityModuleSerialNo": {
+                                "type": "string"
+                            },
+                            "securityModuleVersion": {
+                                "type": "string"
+                            },
+                            "securityChipVersion": {
+                                "type": "string"
+                            },
+                            "securityModuleKeyVersion": {
+                                "type": "string"
+                            },
+                            "UIDLampRecognition": {
+                                "type": "object",
+                                "properties": {
+                                    "enabled": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "bootTime": {
+                                "type": "string"
+                            },
+                            "ZigBeeVersion": {
+                                "type": "object",
+                                "properties": {
+                                    "@min": {
+                                        "type": "string"
+                                    },
+                                    "@max": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "R3Version": {
+                                "type": "object",
+                                "properties": {
+                                    "@min": {
+                                        "type": "string"
+                                    },
+                                    "@max": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "RxVersion": {
+                                "type": "object",
+                                "properties": {
+                                    "@min": {
+                                        "type": "string"
+                                    },
+                                    "@max": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "bspVersion": {
+                                "type": "string"
+                            },
+                            "dspVersion": {
+                                "type": "string"
+                            },
+                            "localUIVersion": {
+                                "type": "string"
+                            },
+                            "isResetDeviceLanguage": {
+                                "type": "object",
+                                "properties": {
+                                    "@_text": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "DeviceInfo": {
+                        "deviceName": "",
+                        "deviceID": "",
+                        "deviceDescription": {
+
+                        },
+                        "deviceLocation": "",
+                        "deviceStatus": "",
+                        "DetailAbnormalStatus": {
+                            "hardDiskFull": {
+
+                            },
+                            "hardDiskError": {
+
+                            },
+                            "ethernetBroken": {
+
+                            },
+                            "ipaddrConflict": {
+
+                            },
+                            "illegalAccess": {
+
+                            },
+                            "recordError": {
+
+                            },
+                            "raidLogicDiskError": {
+
+                            },
+                            "spareWorkDeviceError": {
+
+                            }
+                        },
+                        "systemContact": "",
+                        "model": "",
+                        "serialNumber": "",
+                        "macAddress": "",
+                        "firmwareVersion": "",
+                        "firmwareReleasedDate": "",
+                        "bootVersion": "",
+                        "bootReleasedDate": "",
+                        "hardwareVersion": "",
+                        "encoderVersion": "",
+                        "encoderReleasedDate": "",
+                        "decoderVersion": "",
+                        "decoderReleasedDate": "",
+                        "softwareVersion": "",
+                        "capacity": "",
+                        "usedCapacity": "",
+                        "deviceType": {
+
+                        },
+                        "telecontrolID": "",
+                        "supportBeep": "",
+                        "supportVideoLoss": "",
+                        "firmwareVersionInfo": "",
+                        "actualFloorNum": {
+
+                        },
+                        "subChannelEnabled": "",
+                        "thrChannelEnabled": "",
+                        "radarVersion": "",
+                        "cameraModuleVersion": "",
+                        "mainversion": "",
+                        "subversion": "",
+                        "upgradeversion": "",
+                        "customizeversion": "",
+                        "companyName": "",
+                        "copyright": "",
+                        "systemName": "",
+                        "systemStatus": "",
+                        "isLeaderDevice": "",
+                        "clusterVersion": "",
+                        "customizedInfo": "",
+                        "localZoneNum": "",
+                        "alarmOutNum": "",
+                        "distanceResolution": "",
+                        "angleResolution": "",
+                        "speedResolution": "",
+                        "detectDistance": "",
+                        "languageType": "",
+                        "relayNum": "",
+                        "electroLockNum": "",
+                        "RS485Num": "",
+                        "powerOnMode": "",
+                        "DockStation": {
+                            "Platform": {
+                                "type": "",
+                                "ip": "",
+                                "port": "",
+                                "userName": "",
+                                "password": ""
+                            },
+                            "centralStorageBackupEnabled": ""
+                        },
+                        "webVersion": "",
+                        "deviceRFProgramVersion": "",
+                        "securityModuleSerialNo": "",
+                        "securityModuleVersion": "",
+                        "securityChipVersion": "",
+                        "securityModuleKeyVersion": "",
+                        "UIDLampRecognition": {
+                            "enabled": ""
+                        },
+                        "bootTime": "",
+                        "ZigBeeVersion": {
+                            "@min": "0",
+                            "@max": "16"
+                        },
+                        "R3Version": {
+                            "@min": "0",
+                            "@max": "16"
+                        },
+                        "RxVersion": {
+                            "@min": "0",
+                            "@max": "16"
+                        },
+                        "bspVersion": "",
+                        "dspVersion": "",
+                        "localUIVersion": "",
+                        "isResetDeviceLanguage": {
+                            "@_text": "false"
+                        },
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            },
+            "XML_NetworkInterface": {
+                "title": "Root Type for XML_NetworkInterface",
+                "description": "NetworkInterface message in XML format",
+                "type": "object",
+                "properties": {
+                    "NetworkInterface": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "IPAddress": {
+                                "type": "string"
+                            },
+                            "Wireless": {
+                                "type": "string"
+                            },
+                            "Discovery": {
+                                "type": "string"
+                            },
+                            "Link": {
+                                "type": "string"
+                            },
+                            "defaultConnection": {
+                                "type": "string"
+                            },
+                            "ActiveMulticast": {
+                                "type": "object",
+                                "properties": {
+                                    "enabled": {
+                                        "type": "string"
+                                    },
+                                    "streamID": {
+                                        "type": "object",
+                                        "properties": {
+                                            "@opt": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "ipV4Address": {
+                                        "type": "string"
+                                    },
+                                    "ipV6Address": {
+                                        "type": "string"
+                                    },
+                                    "port": {
+                                        "type": "object",
+                                        "properties": {
+                                            "@min": {
+                                                "type": "string"
+                                            },
+                                            "@max": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "macAddress": {
+                                "type": "object",
+                                "properties": {
+                                    "@min": {
+                                        "type": "string"
+                                    },
+                                    "@max": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "EthernetPortList": {
+                                "type": "object",
+                                "properties": {
+                                    "EthernetPort": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "MACAddress": {
+                                                "type": "string"
+                                            },
+                                            "status": {
+                                                "type": "string"
+                                            },
+                                            "speed": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "@size": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "@version": {
+                                "type": "string"
+                            },
+                            "@xmlns": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "example": {
+                    "NetworkInterface": {
+                        "id": "",
+                        "IPAddress": "",
+                        "Wireless": "",
+                        "Discovery": "",
+                        "Link": "",
+                        "defaultConnection": "",
+                        "ActiveMulticast": {
+                            "enabled": "",
+                            "streamID": {
+                                "@opt": "main"
+                            },
+                            "ipV4Address": "",
+                            "ipV6Address": "",
+                            "port": {
+                                "@min": "",
+                                "@max": ""
+                            }
+                        },
+                        "macAddress": {
+                            "@min": "",
+                            "@max": ""
+                        },
+                        "EthernetPortList": {
+                            "EthernetPort": {
+                                "id": "",
+                                "MACAddress": "",
+                                "status": "",
+                                "speed": ""
+                            },
+                            "@size": "4"
+                        },
+                        "@version": "2.0",
+                        "@xmlns": "http://www.isapi.org/ver20/XMLSchema"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "ISAPI"
+        },
+        {
+            "name": "AccessControl"
+        },
+        {
+            "name": "RemoteControl"
+        },
+        {
+            "name": "System"
+        },
+        {
+            "name": "TwoWayAudio"
+        },
+        {
+            "name": "Video"
+        },
+        {
+            "name": "Streaming"
+        },
+        {
+            "name": "Image"
+        },
+        {
+            "name": "VideoIntercom"
+        },
+        {
+            "name": "Security"
+        },
+        {
+            "name": "Snapshot"
+        }
+    ]
+}
