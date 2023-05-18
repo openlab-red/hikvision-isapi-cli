@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hikvision-isapi-cli"
-version = "1.0.23"
+version = "1.1.0"
 description = "A client library for accessing Hikvision ISAPI and more"
 
 authors = ["mmascia"]
@@ -29,9 +29,6 @@ pytest-unordered = "==0.5.2"
 pytest-picked = "==0.4.6"
 pytest-xdist = "==3.2.1"
 pytest = "==7.3.1"
-#opencv-python = "==4.6.0.66"
-#opencv-python-headless = "==4.6.0.66"
-#numpy = ">=1.24.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
