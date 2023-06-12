@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hikvision-isapi-cli"
-version = "1.1.1"
+version = "1.2.1"
 description = "A client library for accessing Hikvision ISAPI and more"
 
 authors = ["mmascia"]
